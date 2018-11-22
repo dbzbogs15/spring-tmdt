@@ -208,7 +208,7 @@
                         <h3 class="sidebar-heading">Tìm căn hộ cho bạn</h3>
                         <form method="get" action="${pageContext.servletContext.contextPath}/booking" class="colorlib-form">
                             <div class="row">
-                                <input type="text" name="room_id" value="${room.room_id}">
+                                <input type="hidden" name="room_id" value="${room.room_id}">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="date">Ngày nhận:</label>

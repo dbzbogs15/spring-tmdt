@@ -37,67 +37,78 @@
                                 Sau đó, chủ nhà sẽ có 24 giờ để chấp nhận yêu cầu đặt phòng của bạn.
                             </div>
                         </div>
-
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">THÔNG TIN THANH TOÁN</h3>
-                            </div>
-                            <div class="panel-body">
-                                <form class="form-horizontal">
-                                    <div class="form-group form-group-sm">
-                                        <label class="col-sm-2 control-label">Tên</label>
-                                        <div class="col-sm-7">
-                                            <input class="form-control" value="${sessionScope.user.user_fullname}" type="text" placeholder="Tên">
+                        <form action="${pageContext.servletContext.contextPath}/booking/success" method="post">
+                            <input type="hidden" value="${check_in}" name="check_in"/>
+                            <input type="hidden" name="check_out" value="${check_out}">
+                            <input type="hidden" name="room_id" value="${room.room_id}">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">THÔNG TIN THANH TOÁN</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="form-horizontal">
+                                        <div class="form-group form-group-sm">
+                                            <label class="col-sm-2 control-label">Tên</label>
+                                            <div class="col-sm-7">
+                                                <input class="form-control" value="${sessionScope.user.user_fullname}"
+                                                       type="text" name="customer_fullname" placeholder="Tên">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group form-group-sm">
-                                        <label class="col-sm-2 control-label">Email address</label>
-                                        <div class="col-sm-7">
-                                            <input class="form-control" value="${sessionScope.user.user_email}" type="text" placeholder="Email address">
+                                        <div class="form-group form-group-sm">
+                                            <label class="col-sm-2 control-label">Email address</label>
+                                            <div class="col-sm-7">
+                                                <input class="form-control" value="${sessionScope.user.user_email}"
+                                                       type="text" name="customer_email" placeholder="Email address">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group form-group-sm">
-                                        <label class="col-sm-2 control-label">Địa chỉ</label>
-                                        <div class="col-sm-7">
-                                            <input class="form-control" value="${sessionScope.user.user_address}" type="text" placeholder="Địa chỉ">
+                                        <div class="form-group form-group-sm">
+                                            <label class="col-sm-2 control-label">Địa chỉ</label>
+                                            <div class="col-sm-7">
+                                                <input class="form-control" value="${sessionScope.user.user_address}"
+                                                       type="text" name="customer_address" placeholder="Địa chỉ">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group form-group-sm">
-                                        <label class="col-sm-2 control-label">Số điện thoại</label>
-                                        <div class="col-sm-7">
-                                            <input class="form-control" value="${sessionScope.user.user_phone}" type="text" placeholder="Số điện thoại">
+                                        <div class="form-group form-group-sm">
+                                            <label class="col-sm-2 control-label">Số điện thoại</label>
+                                            <div class="col-sm-7">
+                                                <input class="form-control" name="customer_phone"
+                                                       value="${sessionScope.user.user_phone}"
+                                                       type="text" placeholder="Số điện thoại">
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">THÔNG TIN KHÁCH</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="form-group form-group-sm">
-                                    <label class="col-sm-2 control-label">Họ tên</label>
-                                    <div class="col-sm-7">
-                                        <input class="form-control" type="text" placeholder="Họ tên">
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="payment-congrate">
-                            <div class="inner">
-                                <p class="lead">Xin chúc mừng!! Bạn đã đặt được phòng có giá tốt <span class="font700">
+                            <%--<div class="panel panel-info">--%>
+                            <%--<div class="panel-heading">--%>
+                            <%--<h3 class="panel-title">THÔNG TIN KHÁCH</h3>--%>
+                            <%--</div>--%>
+                            <%--<div class="panel-body">--%>
+                            <%--<div class="form-group form-group-sm">--%>
+                            <%--<label class="col-sm-2 control-label">Họ tên</label>--%>
+                            <%--<div class="col-sm-7">--%>
+                            <%--<input class="form-control" type="text" placeholder="Họ tên">--%>
+                            <%--</div>--%>
+                            <%--</div>--%>
+                            <%--</div>--%>
+                            <%--</div>--%>
+                            <div class="payment-congrate">
+                                <div class="inner">
+                                    <p class="lead">Xin chúc mừng!! Bạn đã đặt được phòng có giá tốt <span
+                                            class="font700">
                                                 <span class="currency_symbol">&#8363;</span>${room.room_price * days}
                                             </span></p>
-                                <p>Giá có thể tăng lên, vì vậy hãy đảm bảo đặt phòng của bạn ngay hôm
-                                    nay.</p>
-                                <input type="submit" class="btn book_now_step_2" value="Đặt phòng "><br>
-                                <a class="btn book_now_step_2" href="/">Tìm phòng khác</a>
-                                <p class="payment-term"> By submitting a booking request, you accept
-                                    the <a href='#'>Terms and conditions</a> as well as the <a href='#'>Cancellation
-                                        policy</a> and <a href='#'>House Rules</a></p>
+                                    <p>Giá có thể tăng lên, vì vậy hãy đảm bảo đặt phòng của bạn ngay hôm
+                                        nay.</p>
+                                    <input type="hidden" name="booking_price" value="${room.room_price * days}">
+                                    <input type="submit" class="btn book_now_step_2" value="Đặt phòng "><br>
+                                    <a class="btn book_now_step_2" href="/">Tìm phòng khác</a>
+                                    <p class="payment-term"> By submitting a booking request, you accept
+                                        the <a href='#'>Terms and conditions</a> as well as the <a href='#'>Cancellation
+                                            policy</a> and <a href='#'>House Rules</a></p>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

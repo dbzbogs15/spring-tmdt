@@ -16,7 +16,7 @@
                         <li><a href="about.html">About</a></li>
                         <c:choose>
                             <c:when test="${sessionScope.user != null}">
-                                <li><a href="">Chào ${sessionScope.user.user_fullname}</a> </li>
+                                <li><a href="${pageContext.servletContext.contextPath}/booking/history">Chào ${sessionScope.user.user_fullname}</a> </li>
                                 <li><a href="${pageContext.servletContext.contextPath}/logout">Đăng xuất</a></li>
                             </c:when>
                             <c:otherwise>
