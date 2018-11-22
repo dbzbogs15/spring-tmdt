@@ -28,7 +28,7 @@
                         <c:forEach items="${homestay}" var="homestay">
                             <div class="item">
                                 <div class="hotel-entry">
-                                    <a href="hotels.html" class="hotel-img"
+                                    <a href="${pageContext.servletContext.contextPath}/room/search" class="hotel-img"
                                        style="background-image: url(${pageContext.servletContext.contextPath}/resources/${homestay.homestay_image});">
                                         <p class="price"><span>${homestay.location.location_name}</span>
                                         </p>

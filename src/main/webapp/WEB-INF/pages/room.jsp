@@ -45,7 +45,9 @@
                                                         <p>
                                                                 ${room.room_describe}
                                                         </p>
-                                                        <p><a href="details.html" class="btn btn-primary">Đặt phòng</a>
+                                                        <p>
+                                                            <a href="${pageContext.servletContext.contextPath}/room/search/${room.room_id}"
+                                                               class="btn btn-primary">Đặt phòng</a>
                                                         </p>
                                                     </div>
                                                 </div>

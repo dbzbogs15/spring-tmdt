@@ -15,4 +15,5 @@ public class RoomService {
     public List<Room> findAll() {
         return roomDAO.findAll();
     }
+    public Room getOne(int id) { return roomDAO.getOne(id); }
 }

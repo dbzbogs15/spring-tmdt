@@ -75,6 +75,9 @@ public class UserController {
             return "redirect:/login";
         }
         session.setAttribute("user", userService.login(user_name, MD5.md5(password)));
+        if(session.getAttribute("booking") != null) {
+            return "redirect:/"+session.getAttribute("booking").toString();
+        }
         return "redirect:/";
     }
 
