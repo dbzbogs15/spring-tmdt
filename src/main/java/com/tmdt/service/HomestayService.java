@@ -19,4 +19,9 @@ public class HomestayService {
     public Homestay getOne(int id) {
         return homestayDAO.getOne(id);
     }
+
+    public List<Homestay> getHomestayByUser(String homestay_master) {
+        return homestayDAO.findHomestayByHomestay_master(homestay_master);
+    }
+
 }
