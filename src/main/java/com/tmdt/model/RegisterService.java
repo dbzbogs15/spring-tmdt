@@ -22,4 +22,5 @@ public class RegisterService {
     private Date date_started;
     @Temporal(TemporalType.DATE)
     private Date date_finished;
+    private int price;
 }
