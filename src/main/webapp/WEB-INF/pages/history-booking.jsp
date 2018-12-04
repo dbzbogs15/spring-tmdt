@@ -71,8 +71,12 @@
                                             </c:choose>
                                         </td>
                                         <td>
-                                            <a href="">Chi tiết</a> |
-                                            <a href="">Hủy</a>
+                                            <a href="" class="btn btn-default">
+                                                <span class="glyphicon glyphicon-edit"></span>
+                                            </a>
+                                            <a href="" class="btn btn-default">
+                                                <span class="glyphicon glyphicon-remove"></span>
+                                            </a>
                                         </td>
                                     </tr>
                                     </c:forEach>

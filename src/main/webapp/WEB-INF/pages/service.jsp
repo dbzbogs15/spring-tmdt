@@ -56,14 +56,100 @@
                                                         <fmt:formatNumber pattern="###,###"
                                                                           type="number"
                                                                           value="${service.service_price}"/>
-                                                         VNĐ
+                                                        VNĐ
                                                     </p>
-                                                    <a class="btn btn-default">Mua</a>
+                                                    <a class="btn btn-default" data-toggle="modal"
+                                                       data-target="#${service.service_id}">Mua</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="${service.service_id}" class="modal fade" role="dialog">
+                                            <div class="modal-dialog">
+
+                                                <!-- Modal content-->
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;
+                                                        </button>
+                                                        <h4 class="modal-title">KÍCH HOẠT DỊCH VỤ</h4>
+                                                    </div>
+                                                    <form class="text-center"
+                                                          method="get"
+                                                          action="${pageContext.servletContext.contextPath}/service/pay">
+                                                        <div class="modal-body">
+                                                            <h2>Bạn muốn kích hoạt gói ${service.service_name}
+                                                                với giá
+                                                                <fmt:formatNumber pattern="###,###"
+                                                                                  type="number"
+                                                                                  value="${service.service_price}"/> VNĐ
+                                                                cho homestay nào ?</h2>
+                                                            <div class="form-group">
+                                                                <div class="col-sm-offset-1 col-sm-10">
+                                                                    <select name="homestay_id" class="form-control">
+                                                                        <c:forEach var="list" items="${homestay}">
+                                                                            <option value="${list.homestay_id}">
+                                                                                    ${list.homestay_name}
+                                                                            </option>
+                                                                        </c:forEach>
+                                                                    </select>
+                                                                    <input type="hidden"
+                                                                           name="service_id"
+                                                                           value="${service.service_id}"/>
+                                                                    <input type="hidden"
+                                                                           name="price"
+                                                                           value="${service.service_price}"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button class="btn btn-default" type="submit">Thanh toán
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </c:forEach>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-info">
+                            <div class="panel panel-heading">
+                                <h3 class="panel-title">
+                                    LỊCH SỬ THANH TOÁN</h3>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Tên homestay</th>
+                                        <th>Ngày đăng ký</th>
+                                        <th>Ngày kết thúc</th>
+                                        <th>Giá</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach items="${reg}" var="reg" varStatus="loop">
+                                        <tr>
+                                            <td>
+                                                ${loop.index}
+                                            </td>
+                                            <td>
+                                                ${reg.homestay.homestay_name}
+                                            </td>
+                                            <td>
+                                                ${reg.date_started}
+                                            </td>
+                                            <td>
+                                                ${reg.date_finished}
+                                            </td>
+                                            <td>
+                                                ${reg.price} $
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

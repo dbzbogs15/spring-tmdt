@@ -14,7 +14,7 @@ import java.util.Date;
 @Setter
 public class RegisterService {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int reg_id;
     private int homestay_id;
     private int service_id;
@@ -23,4 +23,12 @@ public class RegisterService {
     @Temporal(TemporalType.DATE)
     private Date date_finished;
     private int price;
+
+    @OneToOne
+    @JoinColumn(name = "homestay_id", insertable = false, updatable = false)
+    private Homestay homestay;
+
+    @OneToOne
+    @JoinColumn(name = "service_id", insertable = false, updatable = false)
+    private Buy buy;
 }

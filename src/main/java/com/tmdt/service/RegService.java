@@ -21,4 +21,7 @@ public class RegService {
     public List<RegisterService> findDate() {
         return registerSDAO.findAllByDate_finishedBefore();
     }
+    public RegisterService add_regService(RegisterService registerService) {
+        return registerSDAO.save(registerService);
+    }
 }

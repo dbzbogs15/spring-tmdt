@@ -26,6 +26,10 @@ public class Homestay implements Serializable {
     private int homestay_number_reviews;
 
     @OneToOne
+    @JoinColumn(name="homestay_master", insertable = false, updatable = false)
+    private Users users;
+
+    @OneToOne
     @JoinColumn(name = "homestay_location", insertable = false, updatable = false)
     private Location location;
 }

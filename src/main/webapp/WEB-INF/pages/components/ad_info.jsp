@@ -50,12 +50,18 @@
                             <span class="glyphicon glyphicon-pencil"></span>
                             Thay đổi thông tin
                         </a>
+                        <a href="${pageContext.servletContext.contextPath}/booking/history"
+                           class="btn br btn-default" style="border-radius: 0; width: 100%; text-align: left">
+                            <span class="glyphicon glyphicon-check"></span>
+                            Lịch sử đặt phòng
+                        </a>
                         <a href="${pageContext.servletContext.contextPath}/homestay/my_homestay"
                            class="btn br btn-default" style="border-radius: 0; width: 100%; text-align: left">
                             <span class="glyphicon glyphicon-th-list"></span>
                             Quản lý homestay
                         </a>
-                        <a class="btn br btn-default" style="border-radius: 0; width: 100%; text-align: left">
+                        <a href="${pageContext.servletContext.contextPath}/service"
+                                class="btn br btn-default" style="border-radius: 0; width: 100%; text-align: left">
                             <span class="glyphicon glyphicon-shopping-cart"></span>
                             Gói dịch vụ
                         </a>

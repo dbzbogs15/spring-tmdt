@@ -15,4 +15,10 @@ public class BuyService {
     public List<Buy> getAllService() {
         return buyDAO.findAll();
     }
+
+    public Buy getById(int id) {
+        return buyDAO.getOne(id);
+    }
+
+
 }
