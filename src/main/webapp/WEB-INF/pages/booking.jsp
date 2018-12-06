@@ -101,7 +101,9 @@
                                     <p>Giá có thể tăng lên, vì vậy hãy đảm bảo đặt phòng của bạn ngay hôm
                                         nay.</p>
                                     <input type="hidden" name="booking_price" value="${room.room_price * days}">
-                                    <input type="submit" class="btn book_now_step_2" value="Đặt phòng "><br>
+                                    <input type="submit"
+                                           style="color: #000"
+                                           class="btn book_now_step_2" value="Đặt phòng "><br>
                                     <a class="btn book_now_step_2" href="/">Tìm phòng khác</a>
                                     <p class="payment-term"> By submitting a booking request, you accept
                                         the <a href='#'>Terms and conditions</a> as well as the <a href='#'>Cancellation

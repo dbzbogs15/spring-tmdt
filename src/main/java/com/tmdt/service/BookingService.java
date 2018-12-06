@@ -19,4 +19,16 @@ public class BookingService {
     public List<Booking> getBookingByUser(String user_names) {
         return bookingDAO.findBookingByUser_name(user_names);
     }
+
+    public List<Booking> getAllBooking() {
+        return bookingDAO.findAll();
+    }
+
+    public Booking getBookById(int id) {
+        return bookingDAO.getOne(id);
+    }
+
+    public Booking updateBookinf(Booking booking) {
+        return bookingDAO.save(booking);
+    }
 }

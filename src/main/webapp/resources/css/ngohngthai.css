@@ -181,3 +181,8 @@ p.lead {
 td > a {
 	color: blue
 }
+
+option {
+	background-color: #eeeeee;
+	color: #0b0b0b;
+}

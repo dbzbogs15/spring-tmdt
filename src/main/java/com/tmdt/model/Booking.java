@@ -35,4 +35,8 @@ public class Booking implements Serializable {
     @OneToOne
     @JoinColumn(name = "room_id", insertable = false, updatable = false)
     private Room room;
+
+    @OneToOne
+    @JoinColumn(name = "user_name", insertable = false, updatable = false)
+    private Users users;
 }

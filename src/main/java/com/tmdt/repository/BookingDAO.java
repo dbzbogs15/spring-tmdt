@@ -11,4 +11,5 @@ import java.util.List;
 public interface BookingDAO extends JpaRepository<Booking, Integer> {
     @Query("select b from Booking  b where b.user_name =:user_name")
     List<Booking> findBookingByUser_name(String user_name);
+
 }

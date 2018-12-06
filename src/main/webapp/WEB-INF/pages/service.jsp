@@ -123,6 +123,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Tên homestay</th>
+                                        <th>Gói</th>
                                         <th>Ngày đăng ký</th>
                                         <th>Ngày kết thúc</th>
                                         <th>Giá</th>
@@ -136,6 +137,9 @@
                                             </td>
                                             <td>
                                                 ${reg.homestay.homestay_name}
+                                            </td>
+                                            <td>
+                                                ${reg.buy.service_name}
                                             </td>
                                             <td>
                                                 ${reg.date_started}

@@ -216,6 +216,7 @@
                                             <i class="icon icon-calendar2"></i>
                                             <input type="text" name="c_in" value="${sessionScope.check_in}" id="date"
                                                    class="form-control date"
+                                                   autocomplete="off"
                                                    placeholder="Ngày nhận">
                                         </div>
                                     </div>
@@ -225,7 +226,9 @@
                                         <label for="date">Ngày trả: </label>
                                         <div class="form-field">
                                             <i class="icon icon-calendar2"></i>
-                                            <input type="text" name="c_out" value="${sessionScope.check_out}" id="date" class="form-control date"
+                                            <input type="text"
+                                                   autocomplete="off"
+                                                   name="c_out" value="${sessionScope.check_out}" id="date" class="form-control date"
                                                    placeholder="Ngày trả">
                                         </div>
                                     </div>

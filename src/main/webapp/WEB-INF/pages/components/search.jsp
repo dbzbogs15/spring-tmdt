@@ -22,9 +22,9 @@
                                         <i class="icon icon-arrow-down3"></i>
                                         <select name="location" id="people" class="form-control">
                                             <c:forEach var="location" items="${location}">
-                                            <option value="${location.location_id}">
-                                                ${location.location_name}
-                                            </option>
+                                                <option value="${location.location_id}">
+                                                        ${location.location_name}
+                                                </option>
                                             </c:forEach>
                                         </select>
                                     </div>
@@ -35,7 +35,9 @@
                                     <label for="date">Ngày nhận:</label>
                                     <div class="form-field">
                                         <i class="icon icon-calendar2"></i>
-                                        <input name="check-in" type="text" id="date" class="form-control date"
+                                        <input name="check-in"
+                                               autocomplete="off"
+                                               type="text" id="date" class="form-control date"
                                                placeholder="Ngày nhận">
                                     </div>
                                 </div>
@@ -45,7 +47,9 @@
                                     <label for="date">Ngày trả:</label>
                                     <div class="form-field">
                                         <i class="icon icon-calendar2"></i>
-                                        <input name="check-out" type="text" id="date" class="form-control date"
+                                        <input name="check-out"
+                                               autocomplete="off"
+                                               type="text" id="date" class="form-control date"
                                                placeholder="Ngày trả">
                                     </div>
                                 </div>
@@ -55,12 +59,14 @@
                                     <label>Số người</label>
                                     <div class="form-field">
                                         <i class="icon icon-arrow-down3"></i>
-                                        <select name="guest" id="people" class="form-control">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5+</option>
+                                        <select name="guest"
+                                                id="people" class="form-control">
+                                            <c:forEach begin="1" end="5" var="i">
+                                                <option style="background-color: #eee; color: #0b0b0b"
+                                                        value="${i}">
+                                                        ${i}
+                                                </option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                 </div>
