@@ -39,6 +39,7 @@
             <div class="col-md-9">
                 <div class="row">
                     <div class="wrap-division">
+                        <h1>${message}</h1>
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <h3 class="panel-title">
@@ -113,6 +114,41 @@
                             </div>
                         </div>
                         <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">DỊCH VỤ ĐANG CHẠY</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <c:forEach var="i" items="${running}">
+                                        <fmt:parseDate value="${nows}" pattern="yyyy-MM-dd" var="nows"/>
+                                        <fmt:formatDate value="${nows}"
+                                                        var="nows"
+                                                        pattern="yyyy-MM-dd"/>
+                                        <div class="col-md-4">
+                                            <div class="thumbnail">
+                                                <a href="/w3images/nature.jpg">
+                                                    <img src="https://www.w3schools.com/w3images/fjords.jpg"
+                                                         alt="Nature"
+                                                         style="width:100%">
+                                                    <div class="caption">
+                                                        <p>${i.homestay.homestay_name}</p>
+                                                        <br>
+                                                        <p>Ngày kết thúc: ${i.date_finished}}</p>
+                                                        <p>Hiện tại ${nows}</p>
+                                                        <c:if test="${nows < i.date_finished}">
+                                                            <button class="btn btn-default">
+                                                                Đang hoạt động
+                                                            </button>
+                                                        </c:if>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </c:forEach>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-info">
                             <div class="panel panel-heading">
                                 <h3 class="panel-title">
                                     LỊCH SỬ THANH TOÁN</h3>
@@ -124,7 +160,7 @@
                                         <th>#</th>
                                         <th>Tên homestay</th>
                                         <th>Gói</th>
-                                        <th>Ngày đăng ký</th>
+                                        <th>Ngày bắt đầu</th>
                                         <th>Ngày kết thúc</th>
                                         <th>Giá</th>
                                     </tr>
@@ -133,22 +169,22 @@
                                     <c:forEach items="${reg}" var="reg" varStatus="loop">
                                         <tr>
                                             <td>
-                                                ${loop.index}
+                                                    ${loop.index}
                                             </td>
                                             <td>
-                                                ${reg.homestay.homestay_name}
+                                                    ${reg.homestay.homestay_name}
                                             </td>
                                             <td>
-                                                ${reg.buy.service_name}
+                                                    ${reg.buy.service_name}
                                             </td>
                                             <td>
-                                                ${reg.date_started}
+                                                    ${reg.date_started}
                                             </td>
                                             <td>
-                                                ${reg.date_finished}
+                                                    ${reg.date_finished}
                                             </td>
                                             <td>
-                                                ${reg.price} $
+                                                    ${reg.price} $
                                             </td>
                                         </tr>
                                     </c:forEach>

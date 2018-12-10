@@ -18,14 +18,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 @Controller
 public class ServiceController {
@@ -55,8 +54,17 @@ public class ServiceController {
                 list.add(r);
             }
         }
+        List<RegisterService> running = new ArrayList<>();
+        for(RegisterService r : regService.findDate()) {
+            if(r.getHomestay().getUsers().getUser_name().equals(u.getUser_name())) {
+                running.add(r);
+            }
+        }
+        mm.addAttribute("running", running);
         mm.addAttribute("homestay", homestayService.getHomestayByUser(u.getUser_name()));
         mm.addAttribute("reg", list);
+        LocalDateTime ldt = LocalDateTime.now();
+        mm.addAttribute("nows", DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH).format(ldt));
         mm.addAttribute("service",buyService.getAllService());
         return "service";
     }
@@ -90,16 +98,26 @@ public class ServiceController {
 
     @GetMapping(URL_PAYPAL_SUCCESS)
     public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId,
-                             HttpSession session) {
+                             HttpSession session, RedirectAttributes ra) {
         try {
             Payment payment = paypalService.executePayment(paymentId, payerId);
             if (payment.getState().equals("approved")) {
                 RegisterService r = new RegisterService();
                 Users u = (Users) session.getAttribute("user");
+                Calendar cal = Calendar.getInstance();
+                System.out.println("Ngày đầu:" + cal.getTime());
                 int homestay_id = (int) session.getAttribute("current_homestay");
                 int service_id =(int) session.getAttribute("current_service");
+                for(RegisterService r2 : regService.findDate()) {
+                    r2.getHomestay().getUsers().getUser_name();
+                    if(r2.getHomestay().getUsers().getUser_name().equals(u.getUser_name())) {
+                        cal.setTime(r2.getDate_finished());
+                        System.out.println("Sau khi set:" + cal.getTime());
+                    }
+                }
+                System.out.println("Ngoài dòng for: " + cal.getTime());
                 r.setHomestay_id(homestay_id);
-                Calendar cal = Calendar.getInstance();
+
                 r.setDate_started(cal.getTime());
                 if(service_id == 0) {
                     cal.add(Calendar.MONTH, 1);
@@ -114,7 +132,8 @@ public class ServiceController {
                 r.setService_id(service_id);
                 r.setPrice(buyService.getById(service_id).getService_price());
                 regService.add_regService(r);
-                return "success";
+                ra.addFlashAttribute("message","Bạn đã thanh toán thành công !");
+                return "redirect:/service";
             }
         } catch (PayPalRESTException e) {
             System.out.println(e.getMessage());
