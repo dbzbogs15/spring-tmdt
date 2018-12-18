@@ -54,15 +54,18 @@ public class ServiceController {
                 list.add(r);
             }
         }
-        List<RegisterService> running = new ArrayList<>();
+        List<Integer> running = new ArrayList<>();
+        List<RegisterService> runObj = new ArrayList<>();
         for(RegisterService r : regService.findDate()) {
             if(r.getHomestay().getUsers().getUser_name().equals(u.getUser_name())) {
-                running.add(r);
+                running.add(r.getHomestay_id());
+                runObj.add(r);
             }
         }
         mm.addAttribute("running", running);
         mm.addAttribute("homestay", homestayService.getHomestayByUser(u.getUser_name()));
         mm.addAttribute("reg", list);
+        mm.addAttribute("runObj", runObj);
         LocalDateTime ldt = LocalDateTime.now();
         mm.addAttribute("nows", DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH).format(ldt));
         mm.addAttribute("service",buyService.getAllService());

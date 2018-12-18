@@ -1,3 +1,6 @@
+<%@ page import="com.tmdt.model.Homestay" %>
+<%@ page import="com.tmdt.model.RegisterService" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -60,7 +63,9 @@
                                                         VNĐ
                                                     </p>
                                                     <a class="btn btn-default" data-toggle="modal"
-                                                       data-target="#${service.service_id}">Mua</a>
+                                                       data-target="#${service.service_id}">
+                                                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                                                        Mua</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -83,7 +88,7 @@
                                                                 với giá
                                                                 <fmt:formatNumber pattern="###,###"
                                                                                   type="number"
-                                                                                  value="${service.service_price}"/> VNĐ
+                                                                                  value="${service.service_price}"/> USD
                                                                 cho homestay nào ?</h2>
                                                             <div class="form-group">
                                                                 <div class="col-sm-offset-1 col-sm-10">
@@ -115,36 +120,107 @@
                         </div>
                         <div class="panel panel-info">
                             <div class="panel-heading">
-                                <h3 class="panel-title">DỊCH VỤ ĐANG CHẠY</h3>
+                                <h3 class="panel-title">TRẠNG THÁI DỊCH VỤ</h3>
                             </div>
                             <div class="panel-body">
+                                <%--<div class="row">--%>
+                                <%--<c:forEach var="homestay" items="${homestay}">--%>
+                                <%--&lt;%&ndash;<fmt:parseDate value="${nows}" pattern="yyyy-MM-dd" var="nows"/>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<fmt:formatDate value="${nows}"&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;var="nows"&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;pattern="yyyy-MM-dd"/>&ndash;%&gt;--%>
+                                <%--<div class="col-md-4">--%>
+                                <%--<div class="thumbnail" style="height: 350px;">--%>
+                                <%--<a href="/w3images/nature.jpg">--%>
+                                <%--<img src="https://www.w3schools.com/w3images/fjords.jpg"--%>
+                                <%--alt="Nature"--%>
+                                <%--style="width:100%">--%>
+                                <%--<div class="caption">--%>
+                                <%--&lt;%&ndash;<c:if test="${nows < i.date_finished}">&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<button class="btn btn-default">&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;Dịch vụ đang chạy&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;</button>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;</c:if>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<p>Ngày kết thúc: ${i.date_finished}}</p>&ndash;%&gt;--%>
+                                <%--<c:forEach items="${running}" var="running">--%>
+                                <%--<c:choose>--%>
+                                <%--<c:when test="${running.homestay_id == homestay.homestay_id}">--%>
+                                <%--<div class="btn btn-default" style="width: 100%">--%>
+                                <%--Đang chạy--%>
+                                <%--</div>--%>
+                                <%--</c:when>--%>
+                                <%--<c:when test="${running.homestay_id != homestay.homestay_id}">--%>
+                                <%--<div class="btn btn-default" style="width: 100%">--%>
+                                <%--Chưa có dịch vụ--%>
+                                <%--</div>--%>
+                                <%--</c:when>--%>
+                                <%--<c:otherwise>--%>
+                                <%--</c:otherwise>--%>
+                                <%--</c:choose>--%>
+                                <%--</c:forEach>--%>
+                                <%--<p>${homestay.homestay_name}</p>--%>
+                                <%--<p>${homestay.homestay_id}</p>--%>
+                                <%--</div>--%>
+                                <%--</a>--%>
+                                <%--</div>--%>
+                                <%--</div>--%>
+                                <%--</c:forEach>--%>
+                                <%--</div>--%>
                                 <div class="row">
-                                    <c:forEach var="i" items="${running}">
-                                        <fmt:parseDate value="${nows}" pattern="yyyy-MM-dd" var="nows"/>
-                                        <fmt:formatDate value="${nows}"
-                                                        var="nows"
-                                                        pattern="yyyy-MM-dd"/>
-                                        <div class="col-md-4">
-                                            <div class="thumbnail">
-                                                <a href="/w3images/nature.jpg">
-                                                    <img src="https://www.w3schools.com/w3images/fjords.jpg"
-                                                         alt="Nature"
-                                                         style="width:100%">
-                                                    <div class="caption">
-                                                        <p>${i.homestay.homestay_name}</p>
-                                                        <br>
-                                                        <p>Ngày kết thúc: ${i.date_finished}}</p>
-                                                        <p>Hiện tại ${nows}</p>
-                                                        <c:if test="${nows < i.date_finished}">
-                                                            <button class="btn btn-default">
-                                                                Đang hoạt động
-                                                            </button>
-                                                        </c:if>
-                                                    </div>
-                                                </a>
-                                            </div>
+                                    <%
+                                        List<Homestay> homestays = (List<Homestay>) request.getAttribute("homestay");
+                                        List<Integer> running = (List<Integer>) request.getAttribute("running");
+                                        List<RegisterService> reg = (List<RegisterService>) request.getAttribute("reg");
+                                        List<RegisterService> runObj = (List<RegisterService>) request.getAttribute("runObj");
+                                        for (Homestay h : homestays) {
+                                    %>
+                                    <div class="col-md-4">
+                                        <div class="thumbnail" style="height: 350px;">
+                                            <a>
+                                                <img src="/resources/<%=h.getHomestay_image()%>"
+                                                     alt="Nature"
+                                                     style="width:100%; height: 170px">
+                                                <div class="caption">
+                                                    <%
+                                                        if (running.contains(h.getHomestay_id())) {
+                                                    %>
+                                                    <button class="btn btn-default" style="width: 100%">
+                                                        <span class="glyphicon glyphicon-time"></span>
+                                                        Đang chạy
+                                                    </button>
+                                                    <%
+                                                    } else {
+                                                    %>
+                                                    <button class="btn btn-default" style="width: 100%">
+                                                        <span class="glyphicon glyphicon-off"></span>
+                                                        Chưa có dịch vụ
+                                                    </button>
+                                                    <%
+                                                        }
+                                                    %>
+                                                    <hr>
+                                                    <p class="label label-primary"
+                                                       style="position: absolute; bottom: 5%">
+                                                        <%
+                                                            if (running.contains(h.getHomestay_id())) {
+                                                                for (RegisterService r : runObj) {
+                                                                    if (r.getHomestay_id() == h.getHomestay_id()) {
+                                                                        out.print("Ngày đăng ký: " + r.getDate_finished());
+                                                                    }
+                                                                }
+                                                            } else {
+                                                                out.print("Chưa đăng ký");
+                                                            }
+                                                        %>
+                                                    </p>
+                                                    <p><%out.print(h.getHomestay_name()); %></p>
+                                                </div>
+                                            </a>
                                         </div>
-                                    </c:forEach>
+                                    </div>
+                                    <%
+                                        }
+                                    %>
                                 </div>
                             </div>
                         </div>
