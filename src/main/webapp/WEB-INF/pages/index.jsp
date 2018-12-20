@@ -28,7 +28,7 @@
                         <c:forEach items="${homestay}" var="homestay">
                             <div class="item">
                                 <div class="hotel-entry">
-                                    <a href="${pageContext.servletContext.contextPath}/room/search" class="hotel-img"
+                                    <a href="${pageContext.servletContext.contextPath}/homestay?id=${homestay.homestay_id}" class="hotel-img"
                                        style="background-image: url(${pageContext.servletContext.contextPath}/resources/${homestay.homestay_image});">
                                         <p class="price"><span>${homestay.location.location_name}</span>
                                         </p>
@@ -39,7 +39,9 @@
                                     <i class="icon-star-full"></i>
                                 </c:forEach>
                                 </span> ${homestay.homestay_reviews} Reviews</p>
-                                        <h3><a href="#">${homestay.homestay_name}</a></h3>
+                                        <h3><a href="${pageContext.servletContext.contextPath}/homestay?id=${homestay.homestay_id}">
+                                                ${homestay.homestay_name}
+                                        </a></h3>
                                         <span class="place">${homestay.homestay_number_reviews} Lượt đánh giá</span>
                                         <p>${homestay.homestay_description}</p>
                                     </div>

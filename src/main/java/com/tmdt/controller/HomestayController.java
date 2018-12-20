@@ -3,6 +3,7 @@ package com.tmdt.controller;
 import com.tmdt.model.Users;
 import com.tmdt.service.HomestayService;
 import com.tmdt.service.LocationService;
+import com.tmdt.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,6 +25,15 @@ public class HomestayController {
 
     @Autowired
     LocationService locationService;
+
+    @Autowired
+    RoomService roomService;
+
+    @RequestMapping("/homestay")
+    public String all_homestay(ModelMap mm, @RequestParam int id) {
+        mm.addAttribute("room", roomService.getRoomByHomestay(id));
+        return "homestay";
+    }
 
     @RequestMapping("/homestay/my_homestay")
     public String homestay(ModelMap mm, HttpSession session) {
