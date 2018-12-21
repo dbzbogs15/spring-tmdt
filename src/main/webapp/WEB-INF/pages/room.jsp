@@ -30,7 +30,14 @@
                                             <div class="row">
                                                 <div class="col-md-6 col-sm-6">
                                                     <div class="room-img"
-                                                         style="background-image: url(${pageContext.servletContext.contextPath}/resources/${room.room_image});"></div>
+                                                         style="background-image: url(${pageContext.servletContext.contextPath}/resources/${room.room_image});">
+                                                        <c:forEach var="reg" items="${reg}">
+                                                            <c:if test="${room.homestay.homestay_id == reg}">
+                                                                <p class="label label-danger"
+                                                                style="font-size: 14px">Đề xuất cho bạn</p>
+                                                            </c:if>
+                                                        </c:forEach>
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-6 col-sm-6">
                                                     <div class="desc">
@@ -61,7 +68,7 @@
             <!-- SIDEBAR-->
             <div class="col-md-3">
                 <div class="sidebar-wrap">
-                    <%@include file="components/right_bar.jsp"%>
+                    <%@include file="components/right_bar.jsp" %>
                 </div>
             </div>
         </div>

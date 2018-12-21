@@ -1,7 +1,9 @@
 package com.tmdt.controller;
 
+import com.tmdt.model.RegisterService;
 import com.tmdt.model.Room;
 import com.tmdt.service.LocationService;
+import com.tmdt.service.RegService;
 import com.tmdt.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,9 @@ public class RoomController {
     @Autowired
     LocationService locationService;
 
+    @Autowired
+    RegService regService;
+
     @GetMapping("/search")
     public String search(@RequestParam(value = "location") int location,
                          @RequestParam(value = "check-in") String c_in,
@@ -36,15 +41,30 @@ public class RoomController {
             session.setAttribute("check_out", c_out);
         }
 
-        System.out.println(guest  + "v");
+        System.out.println(guest + "v");
         session.setAttribute("guest", Integer.parseInt(guest));
         List<Room> result = new ArrayList<>();
+        List<Integer> registerServices = new ArrayList<>();
+        for (RegisterService r : regService.findDate()) {
+            registerServices.add(r.getHomestay_id());
+        }
         for (Room room : roomService.findAll()) {
             System.out.println(room.getHomestay().getLocation().getLocation_id());
-            if (room.getHomestay().getLocation().getLocation_id() == location) {
+            if (room.getHomestay().getLocation().getLocation_id() == location &&
+                    registerServices.contains(room.getHomestay_id()) == true
+            ) {
                 result.add(room);
             }
         }
+        for (Room room : roomService.findAll()) {
+            System.out.println(room.getHomestay().getLocation().getLocation_id());
+            if (room.getHomestay().getLocation().getLocation_id() == location &&
+                    registerServices.contains(room.getHomestay_id()) == false
+            ) {
+                result.add(room);
+            }
+        }
+        mm.addAttribute("reg",registerServices);
         mm.addAttribute("location", locationService.findAll());
         mm.addAttribute("location_s", location);
         mm.addAttribute("room", result);
