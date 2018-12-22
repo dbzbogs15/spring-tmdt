@@ -184,7 +184,7 @@
                                             <div class="alert alert-success">
                                                 <div class="fb-comments"
                                                      data-href="http://ngohongthai.herokuapp.com/${room.room_id}"
-                                                     data-numposts="5"></div>
+                                                     data-numposts="5" data-width="100%"></div>
                                             </div>
                                         </div>
                                         <div id="menu3" class="tab-pane fade">

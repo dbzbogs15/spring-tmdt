@@ -64,7 +64,8 @@
                                             <td>${homestay.homestay_reviews}</td>
                                             <td>${homestay.homestay_number_reviews}</td>
                                             <td>
-                                                <a class="btn btn-default">
+                                                <a class="btn btn-default"
+                                                    href="/homestay/edit_homestay/${homestay.homestay_id}">
                                                     <span class="glyphicon glyphicon-edit"></span>
                                                 </a>
                                                 <a class="btn btn-default">
