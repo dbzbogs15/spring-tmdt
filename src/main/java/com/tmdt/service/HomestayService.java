@@ -23,5 +23,8 @@ public class HomestayService {
     public List<Homestay> getHomestayByUser(String homestay_master) {
         return homestayDAO.findHomestayByHomestay_master(homestay_master);
     }
+    public Homestay update(Homestay homestay) {
+        return homestayDAO.save(homestay);
+    }
 
 }

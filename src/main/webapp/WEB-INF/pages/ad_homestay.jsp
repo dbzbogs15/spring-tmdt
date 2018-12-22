@@ -42,6 +42,7 @@
                                 <a href="${pageContext.servletContext.contextPath}/homestay/add_homestay" class="btn btn-default">
                                     <span class="glyphicon glyphicon-plus"></span>
                                 </a>
+                                <div style="color: red">${message}</div>
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>

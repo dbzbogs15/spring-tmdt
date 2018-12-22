@@ -43,38 +43,48 @@
                             </div>
                             <div class="panel-body">
                                 <form method="post"
-                                      action="${pageContext.servletContext.contextPath}/booking/ad/edit/${booking.booking_id}">
+                                      action="${pageContext.servletContext.contextPath}/homestay/edit_homestay/${homestay.homestay_id}">
                                     <div class="form-horizontal">
                                         <div class="form-group form-group-sm">
                                             <div class="col-sm-offset-3">
                                                 <img src="/resources/${homestay.homestay_image}"
-                                                     class="thumbnail" width="50%">
+                                                     id="imgshow"
+                                                     class="thumbnail" width="75%">
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-group-sm">
+                                            <label class="col-sm-3 control-label">Images</label>
+                                            <div class="col-sm-7">
+                                                <input class="form-control"
+                                                       name="homestay_image"
+                                                       id="imgload"
+                                                       type="file">
                                             </div>
                                         </div>
                                         <div class="form-group form-group-sm">
                                             <label class="col-sm-3 control-label">Tên homestay</label>
                                             <div class="col-sm-7">
                                                 <input class="form-control" value="${homestay.homestay_name}"
-                                                       disabled
+                                                       name="homestay_name"
                                                        type="text" placeholder="Tên">
                                             </div>
                                         </div>
                                         <div class="form-group form-group-sm">
                                             <label class="col-sm-3 control-label">Description</label>
                                             <div class="col-sm-7">
-                                                <input disabled class="form-control"
-                                                       value="${homestay.homestay_description}"
-                                                       type="text" placeholder="Email address">
+                                                <textarea class="form-control"
+                                                          name="description"
+                                                          rows="5">${homestay.homestay_description}</textarea>
                                             </div>
                                         </div>
                                         <div class="form-group form-group-sm">
-                                            <label class="col-sm-3 control-label">Location</label>
+                                            <label class="col-sm-3 control-label">Địa chỉ</label>
                                             <div class="col-sm-7">
-                                                <select class="form-control" name="status">
+                                                <select class="form-control" name="location">
                                                     <c:forEach var="location" items="${location}">
                                                         <option value="${location.location_id}"
 
-                                                                <c:if test="${location.location_id == homestay.homestay_id}">
+                                                                <c:if test="${location.location_id == homestay.location.location_id}">
                                                                     selected
                                                                 </c:if>
                                                         >
@@ -82,20 +92,6 @@
                                                         </option>
                                                     </c:forEach>
                                                 </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-group-sm">
-                                            <label class="col-sm-3 control-label">Ngày nhận</label>
-                                            <div class="col-sm-7">
-                                                <input class="form-control" value="${booking.check_in}"
-                                                       type="date" name="fdate" placeholder="Địa chỉ">
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-group-sm">
-                                            <label class="col-sm-3 control-label">Ngày trả</label>
-                                            <div class="col-sm-7">
-                                                <input class="form-control" value="${booking.check_out}"
-                                                       type="date" name="sdate" placeholder="Địa chỉ">
                                             </div>
                                         </div>
                                         <hr>
@@ -115,7 +111,7 @@
                                         </div>
                                         <hr>
                                         <div class="row col-sm-offset-3">
-                                            <a href="${pageContext.servletContext.contextPath}/booking/ad"
+                                            <a href="${pageContext.servletContext.contextPath}/homestay/my_homestay"
                                                class="btn btn-default">
                                                 <span class="glyphicon glyphicon-backward"></span>
                                                 Quay lại
@@ -136,5 +132,18 @@
     </div>
 </div>
 <%@include file="components/footer.jsp" %>
+<script>
+    $('document').ready(function () {
+        $("#imgload").change(function () {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imgshow').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    });
+</script>
 </body>
 </html>

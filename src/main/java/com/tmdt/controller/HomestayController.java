@@ -1,5 +1,6 @@
 package com.tmdt.controller;
 
+import com.tmdt.model.Homestay;
 import com.tmdt.model.Users;
 import com.tmdt.service.HomestayService;
 import com.tmdt.service.LocationService;
@@ -53,6 +54,22 @@ public class HomestayController {
         mm.addAttribute("homestay", homestayService.getOne(id));
         mm.addAttribute("location",locationService.findAll());
         return "edit_homestay";
+    }
+
+    @PostMapping("homestay/edit_homestay/{id}")
+    public String edited(ModelMap mm, WebRequest wr, @PathVariable int id,
+                         RedirectAttributes redirectAttributes) {
+        String homestay_name = wr.getParameter("homestay_name");
+        String description = wr.getParameter("description");
+        int location = Integer.parseInt(wr.getParameter("location"));
+        Homestay homestay = homestayService.getOne(id);
+        homestay.setHomestay_name(homestay_name);
+        homestay.setHomestay_description(description);
+        homestay.setHomestay_location(location);
+
+        homestayService.update(homestay);
+        redirectAttributes.addFlashAttribute("message","Thay đổi thông tin homestay thành công!");
+        return "redirect:/homestay/my_homestay";
     }
 
     @PostMapping("/homestay/add_homestay")
