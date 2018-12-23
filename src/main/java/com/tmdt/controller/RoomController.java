@@ -76,4 +76,11 @@ public class RoomController {
         mm.addAttribute("room", roomService.getOne(id));
         return "room-detail";
     }
+
+    @GetMapping("/ad_room/{id}")
+    public String getAllRoom(ModelMap mm, @PathVariable int id) {
+        mm.addAttribute("room", roomService.getRoomByHomestay(id));
+        System.out.println("ABC");
+        return "ad_room";
+    }
 }

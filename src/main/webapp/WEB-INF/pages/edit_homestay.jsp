@@ -99,14 +99,18 @@
                                             <label class="col-sm-3 control-label">Điểm đánh giá</label>
                                             <div class="col-sm-7">
                                                 <input class="form-control" value="${homestay.homestay_reviews}"
-                                                       type="text" name="fullname" placeholder="Địa chỉ">
+                                                       type="text"
+                                                       disabled
+                                                       name="fullname" placeholder="Địa chỉ">
                                             </div>
                                         </div>
                                         <div class="form-group form-group-sm">
                                             <label class="col-sm-3 control-label">Lượt đánh giá</label>
                                             <div class="col-sm-7">
                                                 <input class="form-control" value="${homestay.homestay_number_reviews}"
-                                                       type="text" name="phone" placeholder="Địa chỉ">
+                                                       type="text"
+                                                       disabled
+                                                       name="phone" placeholder="Địa chỉ">
                                             </div>
                                         </div>
                                         <hr>

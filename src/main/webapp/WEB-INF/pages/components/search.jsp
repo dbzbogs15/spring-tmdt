@@ -22,7 +22,8 @@
                                         <i class="icon icon-arrow-down3"></i>
                                         <select name="location" id="people" class="form-control">
                                             <c:forEach var="location" items="${location}">
-                                                <option value="${location.location_id}">
+                                                <option style="background-color: #eee; color: #0b0b0b"
+                                                        value="${location.location_id}">
                                                         ${location.location_name}
                                                 </option>
                                             </c:forEach>

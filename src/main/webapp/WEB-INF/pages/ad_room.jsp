@@ -15,6 +15,23 @@
     <%--
 </c:if>
 --%>
+    <style>
+        .form-control {
+            display: block;
+            width: 100%;
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+        }
+    </style>
 </head>
 <body>
 <%@include file="components/navbar.jsp" %>
@@ -39,7 +56,8 @@
                                 <h3 class="panel-title">QUẢN LÝ HOMESTAY</h3>
                             </div>
                             <div class="panel-body">
-                                <a href="${pageContext.servletContext.contextPath}/homestay/add_homestay" class="btn btn-default">
+                                <a href="${pageContext.servletContext.contextPath}/homestay/add_homestay"
+                                   class="btn btn-default">
                                     <span class="glyphicon glyphicon-plus"></span>
                                 </a>
                                 <div style="color: red">${message}</div>
@@ -49,30 +67,35 @@
                                         <th>#</th>
                                         <th>Tên phòng</th>
                                         <%--<th>Giới thiệu</th>--%>
-                                        <th>Đánh giá</th>
-                                        <th>Số lượt đánh giá</th>
+                                        <th>Trạng thái</th>
+                                        <th>Giá</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach var="homestay" varStatus="loop" items="${homestay}">
+                                    <c:forEach items="${room}" var="room" varStatus="loop">
                                         <tr>
                                             <td>${loop.index}</td>
-                                            <td width="30%">${homestay.homestay_name}</td>
-                                                <%--<td width="30%">--%>
-                                                <%--${homestay.homestay_description}--%>
-                                                <%--</td>--%>
-                                            <td>${homestay.homestay_reviews}</td>
-                                            <td>${homestay.homestay_number_reviews}</td>
+                                            <td>${room.room_name}</td>
+                                            <td>
+                                                <select class="form-control">
+                                                    <c:forEach var="i" begin="1" end="2">
+                                                        <option value="${i}">
+                                                            <c:if test="${i == 1}">
+                                                                Đang mở
+                                                            </c:if>
+                                                            <c:if test="${i == 2}">
+                                                                Đang đóng
+                                                            </c:if>
+                                                        </option>
+                                                    </c:forEach>
+                                                </select>
+                                            </td>
+                                            <td>${room.room_price}</td>
                                             <td>
                                                 <a class="btn btn-default"
-                                                    href="/homestay/edit_homestay/${homestay.homestay_id}">
+                                                >
                                                     <span class="glyphicon glyphicon-edit"></span>
-                                                </a>
-                                                <a href="/room/ad_room/${homestay.homestay_id}"
-                                                        class="btn btn-default">
-                                                    <span class="glyphicon glyphicon-list"></span>
-                                                    Quản lý phòng
                                                 </a>
                                                 <a class="btn btn-default">
                                                     <span class="glyphicon glyphicon-trash"></span>
@@ -82,7 +105,7 @@
                                     </c:forEach>
                                     </tbody>
                                 </table>
-                                <c:if test="${fn:length(homestay) == 0}">
+                                <c:if test="${fn:length(room) == 0}">
                                     <div class="text-center">
                                         <a class="btn btn-default"
                                            href="${pageContext.servletContext.contextPath}/homestay/add_homestay"

@@ -35,11 +35,11 @@
                     <div class="form-field">
                         <i class="icon icon-arrow-down3"></i>
                         <select name="guest" id="people" class="form-control">
-                            <option value="#">1</option>
-                            <option value="#">2</option>
-                            <option value="#">3</option>
-                            <option value="#">4</option>
-                            <option value="#">5+</option>
+                            <option style="background-color: #eee; color: #0b0b0b" value="#">1</option>
+                            <option style="background-color: #eee; color: #0b0b0b" value="#">2</option>
+                            <option style="background-color: #eee; color: #0b0b0b" value="#">3</option>
+                            <option style="background-color: #eee; color: #0b0b0b" value="#">4</option>
+                            <option style="background-color: #eee; color: #0b0b0b" value="#">5+</option>
                         </select>
                     </div>
                 </div>
@@ -87,90 +87,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<div class="side animate-box">
-    <div class="row">
-        <div class="col-md-12">
-            <h3 class="sidebar-heading">Review Rating</h3>
-            <form method="post" class="colorlib-form-2">
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">
-                        <p class="rate"><span><i class="icon-star-full"></i><i
-                                class="icon-star-full"></i><i class="icon-star-full"></i><i
-                                class="icon-star-full"></i><i class="icon-star-full"></i></span></p>
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">
-                        <p class="rate"><span><i class="icon-star-full"></i><i
-                                class="icon-star-full"></i><i class="icon-star-full"></i><i
-                                class="icon-star-full"></i></span></p>
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">
-                        <p class="rate"><span><i class="icon-star-full"></i><i
-                                class="icon-star-full"></i><i class="icon-star-full"></i></span></p>
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">
-                        <p class="rate"><span><i class="icon-star-full"></i><i
-                                class="icon-star-full"></i></span></p>
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">
-                        <p class="rate"><span><i class="icon-star-full"></i></span></p>
-                    </label>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<div class="side animate-box">
-    <div class="row">
-        <div class="col-md-12">
-            <h3 class="sidebar-heading">Loại phòng</h3>
-            <form method="post" class="colorlib-form-2">
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">
-                        <h4 class="place">Apartment</h4>
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">
-                        <h4 class="place">Hotel</h4>
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">
-                        <h4 class="place">Hostel</h4>
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">
-                        <h4 class="place">Inn</h4>
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">
-                        <h4 class="place">Villa</h4>
-                    </label>
                 </div>
             </form>
         </div>
