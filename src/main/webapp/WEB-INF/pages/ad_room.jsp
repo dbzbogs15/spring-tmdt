@@ -53,7 +53,10 @@
                     <div class="wrap-division">
                         <div class="panel panel-info">
                             <div class="panel-heading">
-                                <h3 class="panel-title">QUẢN LÝ HOMESTAY</h3>
+                                <h3 class="panel-title">
+                                    <a href="/homestay/my_homestay">QUẢN LÝ HOMESTAY</a> >
+                                    QUẢN LÝ PHÒNG
+                                </h3>
                             </div>
                             <div class="panel-body">
                                 <a href="${pageContext.servletContext.contextPath}/homestay/add_homestay"
@@ -65,7 +68,7 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Tên phòng</th>
+                                        <th width="30%">Tên phòng</th>
                                         <%--<th>Giới thiệu</th>--%>
                                         <th>Trạng thái</th>
                                         <th>Giá</th>
@@ -78,7 +81,8 @@
                                             <td>${loop.index}</td>
                                             <td>${room.room_name}</td>
                                             <td>
-                                                <select class="form-control">
+                                                <select style="width: 60%"
+                                                        class="form-control">
                                                     <c:forEach var="i" begin="1" end="2">
                                                         <option value="${i}">
                                                             <c:if test="${i == 1}">
@@ -94,6 +98,7 @@
                                             <td>${room.room_price}</td>
                                             <td>
                                                 <a class="btn btn-default"
+                                                   href="/room/edit_room/${room.room_id}"
                                                 >
                                                     <span class="glyphicon glyphicon-edit"></span>
                                                 </a>

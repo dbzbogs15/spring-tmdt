@@ -19,4 +19,7 @@ public class RoomService {
     public List<Room> getRoomByHomestay(int id) {
         return roomDAO.getRoomByHomestay_id(id);
     }
+    public Room updateRoom(Room room) {
+        return roomDAO.save(room);
+    }
 }

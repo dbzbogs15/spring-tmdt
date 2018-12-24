@@ -8,10 +8,9 @@ import com.tmdt.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -82,5 +81,30 @@ public class RoomController {
         mm.addAttribute("room", roomService.getRoomByHomestay(id));
         System.out.println("ABC");
         return "ad_room";
+    }
+
+    @GetMapping("/edit_room/{id}")
+    public String editRoom(ModelMap mm, @PathVariable int id) {
+        mm.addAttribute("room",roomService.getOne(id));
+        return "edit_room";
+    }
+
+    @PostMapping("/edit_room/{id}")
+    public String editedRoom(@PathVariable int id, WebRequest wr,
+                             RedirectAttributes redirectAttributes) {
+        Room room = roomService.getOne(id);
+        String room_name = wr.getParameter("room_name");
+        String address = wr.getParameter("address");
+//        int price = Integer.parseInt(wr.getParameter("price"));
+        String description = wr.getParameter("description");
+        String info = wr.getParameter("info");
+        room.setRoom_name(room_name);
+        room.setRoom_address(address);
+//        room.setRoom_price(price);
+        room.setRoom_describe(description);
+        room.setRoom_information(info);
+        roomService.updateRoom(room);
+        redirectAttributes.addFlashAttribute("message", "Thay đổi thông tin phòng thành công!");
+        return "redirect:/room/ad_room/" + room.getHomestay_id();
     }
 }
