@@ -16,7 +16,7 @@ public class Room {
     @GeneratedValue
     private int room_id;
     private String room_name;
-    private String room_status;
+    private int room_status;
     private int room_number_guest;
     private int room_reviews;
     private int room_number_reviews;

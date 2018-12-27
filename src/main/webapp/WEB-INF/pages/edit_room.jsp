@@ -15,7 +15,7 @@
     <%--
 </c:if>
 --%>
-    <script type="text/javascript" src="/resources/ckeditor/ckeditor.js"> </script>
+    <script type="text/javascript" src="/resources/ckeditor/ckeditor.js"></script>
 </head>
 <body>
 <%@include file="components/navbar.jsp" %>
@@ -79,6 +79,29 @@
                                             </div>
                                         </div>
                                         <div class="form-group form-group-sm">
+                                            <label class="col-sm-3 control-label">Giá phòng VNĐ</label>
+                                            <div class="col-sm-7">
+                                                <input class="form-control" value="${room.room_price}"
+                                                       name="price"
+                                                       type="text" placeholder="Giá phòng">
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-group-sm">
+                                            <label class="col-sm-3 control-label">Trạng thái</label>
+                                            <div class="col-sm-7">
+                                                <select name="status" class="form-control">
+                                                    <option <c:if test="${1 == room.room_status}">
+                                                        selected</c:if>
+                                                            value="1">Hoạt động
+                                                    </option>
+                                                    <option <c:if test="${0 == room.room_status}">
+                                                        selected</c:if>
+                                                            value="0">Đóng
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-group-sm">
                                             <label class="col-sm-3 control-label">Thông tin phòng</label>
                                             <div class="col-sm-7">
                                                 <textarea class="form-control"
@@ -88,6 +111,23 @@
                                             </div>
                                         </div>
                                         <hr>
+                                        <div class="form-group form-group-sm">
+                                            <label class="col-sm-3 control-label">Homestay</label>
+                                            <div class="col-sm-7">
+                                                <select name="homestay_id"
+                                                        class="form-control">
+                                                    <c:forEach var="homestay" items="${homestay}">
+                                                        <option
+                                                                <c:if test="${homestay.homestay_id == room.homestay.homestay_id}">
+                                                                    selected
+                                                                </c:if>
+                                                                value="${homestay.homestay_id}">
+                                                                ${homestay.homestay_name}
+                                                        </option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="form-group form-group-sm">
                                             <label class="col-sm-3 control-label">Điểm đánh giá</label>
                                             <div class="col-sm-7">
@@ -143,7 +183,7 @@
     });
 </script>
 <script>
-    CKEDITOR.replace( 'noidung');
+    CKEDITOR.replace('noidung');
 </script>
 </body>
 </html>

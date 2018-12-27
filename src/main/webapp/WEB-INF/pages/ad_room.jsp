@@ -83,16 +83,18 @@
                                             <td>
                                                 <select style="width: 60%"
                                                         class="form-control">
-                                                    <c:forEach var="i" begin="1" end="2">
-                                                        <option value="${i}">
-                                                            <c:if test="${i == 1}">
-                                                                Đang mở
-                                                            </c:if>
-                                                            <c:if test="${i == 2}">
-                                                                Đang đóng
-                                                            </c:if>
+                                                        <option value="1"
+                                                        <c:if test="${room.status == 1}">
+                                                            selected
+                                                        </c:if>
+                                                        > Đang mở
                                                         </option>
-                                                    </c:forEach>
+                                                    <option value="0"
+                                                            <c:if test="${room.status == 0}">
+                                                                selected
+                                                            </c:if>
+                                                    > Đã đóng
+                                                    </option>
                                                 </select>
                                             </td>
                                             <td>${room.room_price}</td>

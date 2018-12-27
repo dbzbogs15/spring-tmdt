@@ -2,6 +2,8 @@ package com.tmdt.controller;
 
 import com.tmdt.model.RegisterService;
 import com.tmdt.model.Room;
+import com.tmdt.model.Users;
+import com.tmdt.service.HomestayService;
 import com.tmdt.service.LocationService;
 import com.tmdt.service.RegService;
 import com.tmdt.service.RoomService;
@@ -27,6 +29,9 @@ public class RoomController {
 
     @Autowired
     RegService regService;
+
+    @Autowired
+    HomestayService homestayService;
 
     @GetMapping("/search")
     public String search(@RequestParam(value = "location") int location,
@@ -84,8 +89,11 @@ public class RoomController {
     }
 
     @GetMapping("/edit_room/{id}")
-    public String editRoom(ModelMap mm, @PathVariable int id) {
+    public String editRoom(ModelMap mm, @PathVariable int id,
+                           HttpSession session) {
         mm.addAttribute("room",roomService.getOne(id));
+        Users users = (Users) session.getAttribute("user");
+        mm.addAttribute("homestay", homestayService.getHomestayByUser(users.getUser_name()));
         return "edit_room";
     }
 
@@ -95,14 +103,18 @@ public class RoomController {
         Room room = roomService.getOne(id);
         String room_name = wr.getParameter("room_name");
         String address = wr.getParameter("address");
-//        int price = Integer.parseInt(wr.getParameter("price"));
+        int status = Integer.parseInt(wr.getParameter("status"));
+        int price = Integer.parseInt(wr.getParameter("price"));
         String description = wr.getParameter("description");
         String info = wr.getParameter("info");
+        int id_homestay = Integer.parseInt(wr.getParameter("homestay_id"));
         room.setRoom_name(room_name);
         room.setRoom_address(address);
-//        room.setRoom_price(price);
+        room.setRoom_price(price);
         room.setRoom_describe(description);
         room.setRoom_information(info);
+        room.setRoom_status(status);
+        room.setHomestay_id(id_homestay);
         roomService.updateRoom(room);
         redirectAttributes.addFlashAttribute("message", "Thay đổi thông tin phòng thành công!");
         return "redirect:/room/ad_room/" + room.getHomestay_id();

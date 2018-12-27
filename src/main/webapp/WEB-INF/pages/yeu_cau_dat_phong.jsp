@@ -43,8 +43,8 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Khách hàng</th>
+                                        <th>Tên phòng</th>
                                         <th>Ngày bắt đầu</th>
-                                        <th>Ngày kết thúc</th>
                                         <th>Trạng thái</th>
                                         <th>Action</th>
                                     </tr>
@@ -54,8 +54,8 @@
                                             <tr>
                                                 <td>${loop.index}</td>
                                                 <td>${list.users.user_fullname}</td>
+                                                <td width="30%">${list.room.room_name}</td>
                                                 <td>${list.check_in}</td>
-                                                <td>${list.check_out}</td>
                                                 <td>
                                                     <c:choose>
                                                         <c:when test="${list.booking_status == 1}">

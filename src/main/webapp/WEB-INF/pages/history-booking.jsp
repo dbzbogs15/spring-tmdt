@@ -14,6 +14,15 @@
     <%--
 </c:if>
 --%>
+    <style>
+        .btn {
+            margin-bottom: 0;
+            font-size: 16px;
+        }
+        .btn-sm {
+            font-size: 12px;
+        }
+    </style>
 </head>
 <body>
 <%@include file="components/navbar.jsp" %>
@@ -60,13 +69,18 @@
                                         <td>
                                             <c:choose>
                                                 <c:when test="${booking.booking_status == 1}">
-                                                    Đã thanh toán
+                                                    <button class="btn btn-primary btn-sm">
+                                                        <span class="glyphicon glyphicon-check"></span>
+                                                        Đã thanh toán</button>
                                                 </c:when>
                                                 <c:when test="${booking.booking_status == 2}">
-                                                    Đang chờ
+                                                    <button class="btn btn-warning btn-sm">
+                                                        <span class="glyphicon glyphicon-play-circle"></span>
+                                                        Đang chờ
+                                                    </button>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    Đã hủy
+                                                    <button class="btn btn-danger btn-sm">Đã hủy</button>
                                                 </c:otherwise>
                                             </c:choose>
                                         </td>
