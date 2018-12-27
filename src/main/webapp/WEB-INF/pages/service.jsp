@@ -43,7 +43,13 @@
                 <div class="row">
                     <div class="wrap-division">
                         <h1>${message}</h1>
-                        <div class="panel panel-info">
+                        <c:if test="${message != null}">
+                            <a href="#lichsu"
+                                class="btn btn-default">
+                                Click để xem chi tiết
+                            </a>
+                        </c:if>
+                        <div id="service" class="panel panel-info">
                             <div class="panel-heading">
                                 <h3 class="panel-title">
                                     MUA DỊCH VỤ</h3>
@@ -184,17 +190,21 @@
                                                     <%
                                                         if (running.contains(h.getHomestay_id())) {
                                                     %>
-                                                    <button class="btn btn-default" style="width: 100%">
+                                                    <a class="btn btn-default"
+                                                       href="#lichsu"
+                                                       style="width: 100%">
                                                         <span class="glyphicon glyphicon-time"></span>
                                                         Đang chạy
-                                                    </button>
+                                                    </a>
                                                     <%
                                                     } else {
                                                     %>
-                                                    <button class="btn btn-default" style="width: 100%">
+                                                    <a class="btn btn-default"
+                                                       href="#service"
+                                                       style="width: 100%">
                                                         <span class="glyphicon glyphicon-off"></span>
                                                         Chưa có dịch vụ
-                                                    </button>
+                                                    </a>
                                                     <%
                                                         }
                                                     %>
@@ -224,7 +234,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="panel panel-info">
+                        <div id="lichsu" class="panel panel-info">
                             <div class="panel panel-heading">
                                 <h3 class="panel-title">
                                     LỊCH SỬ THANH TOÁN</h3>
@@ -236,9 +246,8 @@
                                         <th>#</th>
                                         <th>Tên homestay</th>
                                         <th>Gói</th>
-                                        <th>Ngày bắt đầu</th>
-                                        <th>Ngày kết thúc</th>
                                         <th>Giá</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -247,22 +256,48 @@
                                             <td>
                                                     ${loop.index}
                                             </td>
-                                            <td>
+                                            <td width="40%">
                                                     ${reg.homestay.homestay_name}
                                             </td>
                                             <td>
                                                     ${reg.buy.service_name}
                                             </td>
                                             <td>
-                                                    ${reg.date_started}
-                                            </td>
-                                            <td>
-                                                    ${reg.date_finished}
-                                            </td>
-                                            <td>
                                                     ${reg.price} $
                                             </td>
+                                            <td>
+                                                <a class="btn btn-default"
+                                                   data-toggle="modal" data-target="#my${loop.index}"
+                                                >
+                                                    Xem chi tiết
+                                                </a>
+                                                <c:if test="${loop.index == 0}">
+                                                <img src="/resources/images/1_new_4a.gif">
+                                                </c:if>
+                                            </td>
                                         </tr>
+                                        <div id="my${loop.index}" class="modal fade" role="dialog">
+                                            <div class="modal-dialog">
+
+                                                <!-- Modal content-->
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title">Thông tin thanh toán</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Tên homestay: <b>${reg.homestay.homestay_name}</b></p>
+                                                        <p>Ngày đăng ký: <b>${reg.date_started}</b></p>
+                                                        <p>Ngày kết thúc dịch vụ: <b>${reg.date_finished}</b></p>
+                                                        <p>Phí thanh toán: <b>${reg.price} USD</b></p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
                                     </c:forEach>
                                     </tbody>
                                 </table>

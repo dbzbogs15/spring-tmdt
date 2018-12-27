@@ -62,6 +62,7 @@ public class ServiceController {
                 runObj.add(r);
             }
         }
+        Collections.reverse(list);
         mm.addAttribute("running", running);
         mm.addAttribute("homestay", homestayService.getHomestayByUser(u.getUser_name()));
         mm.addAttribute("reg", list);

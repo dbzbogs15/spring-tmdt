@@ -148,7 +148,7 @@
                                         </div>
                                         <hr>
                                         <div class="row col-sm-offset-3">
-                                            <a href="${pageContext.servletContext.contextPath}/room/ad_room"
+                                            <a href="${pageContext.servletContext.contextPath}/room/ad_room/${room.homestay_id}"
                                                class="btn btn-default">
                                                 <span class="glyphicon glyphicon-backward"></span>
                                                 Quay lại

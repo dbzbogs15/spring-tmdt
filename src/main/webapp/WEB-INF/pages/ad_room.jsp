@@ -84,13 +84,13 @@
                                                 <select style="width: 60%"
                                                         class="form-control">
                                                         <option value="1"
-                                                        <c:if test="${room.status == 1}">
+                                                        <c:if test="${room.room_status == 1}">
                                                             selected
                                                         </c:if>
                                                         > Đang mở
                                                         </option>
                                                     <option value="0"
-                                                            <c:if test="${room.status == 0}">
+                                                            <c:if test="${room.room_status == 0}">
                                                                 selected
                                                             </c:if>
                                                     > Đã đóng
