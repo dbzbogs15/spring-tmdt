@@ -85,7 +85,7 @@
                                             </c:choose>
                                         </td>
                                         <td>
-                                            <a href="" class="btn btn-default">
+                                            <a href="/booking/edit_booking?id=${booking.booking_id}" class="btn btn-default">
                                                 <span class="glyphicon glyphicon-edit"></span>
                                             </a>
                                             <a href="" class="btn btn-default">

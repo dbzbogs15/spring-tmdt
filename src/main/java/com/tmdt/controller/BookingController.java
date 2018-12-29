@@ -141,4 +141,11 @@ public class BookingController {
         bookingService.updateBookinf(b);
         return "redirect:/booking/ad";
     }
+
+    @GetMapping("/booking/edit_booking")
+    public String edit_booking(@RequestParam int id, ModelMap mm) {
+        Booking booking = bookingService.getBookById(id);
+        mm.addAttribute("booking", booking);
+        return "edit_booking";
+    }
 }
