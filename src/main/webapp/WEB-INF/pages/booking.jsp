@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="en">
 <head>
     <%@include file="components/header.jsp" %>
@@ -96,7 +96,7 @@
                                 <div class="inner">
                                     <p class="lead">Xin chúc mừng!! Bạn đã đặt được phòng có giá tốt <span
                                             class="font700">
-                                                <span class="currency_symbol">&#8363;</span>${room.room_price * days}
+                                                <span class="currency_symbol">&#8363;</span><fmt:formatNumber type="number" value="${room.room_price * days}" pattern="###,###"></fmt:formatNumber>
                                             </span></p>
                                     <p>Giá có thể tăng lên, vì vậy hãy đảm bảo đặt phòng của bạn ngay hôm
                                         nay.</p>
@@ -152,7 +152,7 @@
                                     <div class="form-group">
                                         <label for="date">giá phòng ${room.room_price}đ x ${days} ngày
                                         </label>
-                                        <h2 style="color: #fff"> = ${room.room_price * days}đ</h2>
+                                        <h2 style="color: #fff"> = <fmt:formatNumber type="number" value="${room.room_price * days}" pattern="###,###"></fmt:formatNumber>đ</h2>
                                     </div>
                                 </div>
                             </div>

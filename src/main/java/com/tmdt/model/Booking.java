@@ -28,7 +28,7 @@ public class Booking implements Serializable {
     private String customer_fullname;
     private String customer_phone;
     private String customer_address;
-    private Date customer_date_of_birth;
+    private String customer_email;
     private int booking_price;
     private int booking_status;
 

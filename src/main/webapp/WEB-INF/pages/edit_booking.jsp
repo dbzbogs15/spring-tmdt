@@ -43,14 +43,14 @@
                             </div>
                             <div class="panel-body">
                                 <form method="post"
-                                      action="">
+                                      action="/booking/edit_booking?id_booking=${booking.booking_id}">
                                     <div class="form-horizontal">
                                         <div class="form-group form-group-sm">
                                             <label class="col-sm-3 control-label">Tên khách hàng</label>
                                             <div class="col-sm-7">
                                                 <input class="form-control"
                                                        value="${booking.customer_fullname}"
-                                                       name="homestay_name"
+                                                       name="customer_name"
                                                        type="text" placeholder="Tên khách hàng">
                                             </div>
                                         </div>
@@ -59,8 +59,17 @@
                                             <div class="col-sm-7">
                                                 <input class="form-control"
                                                        value="${booking.customer_phone}"
-                                                       name="homestay_name"
-                                                       type="text" placeholder="Số điệnt thoại">
+                                                       name="phone"
+                                                       type="text" placeholder="Số điện thoại">
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-group-sm">
+                                            <label class="col-sm-3 control-label">Địa chỉ khách hàng</label>
+                                            <div class="col-sm-7">
+                                                <input class="form-control"
+                                                       value="${booking.customer_address}"
+                                                       name="address"
+                                                       type="text" placeholder="Địa chỉ khách hàng">
                                             </div>
                                         </div>
                                         <div class="form-group form-group-sm">
@@ -68,7 +77,7 @@
                                             <div class="col-sm-7">
                                                 <input class="form-control date"
                                                        value="<fmt:formatDate value="${booking.check_in}" pattern="MM/dd/yyyy"/>"
-                                                       name="homestay_name"
+                                                       name="check_in"
                                                        autocomplete="off"
                                                        id="date1"
                                                        type="text" placeholder="Ngày nhận">
@@ -78,9 +87,9 @@
                                             <label class="col-sm-3 control-label">Ngày trả</label>
                                             <div class="col-sm-7">
                                                 <input class="form-control date"
-                                                       value="<fmt:formatDate value="${booking.check_in}" pattern="MM/dd/yyyy"/>"
+                                                       value="<fmt:formatDate value="${booking.check_out}" pattern="MM/dd/yyyy"/>"
                                                        autocomplete="off"
-                                                       name="c_out"
+                                                       name="check_out"
                                                        id="date2"
                                                        type="text" placeholder="Ngày trả">
                                             </div>
@@ -90,7 +99,8 @@
                                             <div class="col-sm-7">
                                                 <input class="form-control"
                                                        id="price"
-                                                       name="homestay_name"
+                                                       value="${booking.booking_price}"
+                                                       name="price"
                                                        type="text" placeholder="Ngày trả">
                                             </div>
                                         </div>
@@ -101,7 +111,7 @@
                                                 <input class="form-control"
                                                        value="${booking.room.room_name}"
                                                        disabled
-                                                       type="text" placeholder="Ngày trả">
+                                                       type="text">
                                             </div>
                                         </div>
                                         <div class="form-group form-group-sm">
@@ -133,6 +143,11 @@
                                                 <span class="glyphicon glyphicon-check"></span>
                                                 Xác nhận
                                             </button>
+                                            <a href="/booking/cancel_booking?booking_id=${booking.booking_id}"
+                                                    class="btn btn-danger">
+                                                <span class="glyphicon glyphicon-remove"></span>
+                                                Hủy đặt phòng
+                                            </a>
                                         </div>
                                     </div>
                                 </form>
@@ -165,7 +180,9 @@
             var d2 = new Date($('#date2').val());
             var timeDiff = Math.abs(d2.getTime() - d1.getTime());
             var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-            var gia = ${booking.room.room_price} * diffDays;
+            var gia =
+            ${booking.room.room_price} *
+            diffDays;
             $('#songay').html("Giá : ${booking.room.room_price} x " + diffDays + " ngày");
             $('#price').val(gia);
             console.log(diffDays);
@@ -175,7 +192,9 @@
             var d2 = new Date($('#date2').val());
             var timeDiff = Math.abs(d2.getTime() - d1.getTime());
             var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-            var gia = ${booking.room.room_price} * diffDays;
+            var gia =
+            ${booking.room.room_price} *
+            diffDays;
             $('#songay').html("Giá : ${booking.room.room_price} x " + diffDays + " ngày");
             $('#price').val(gia);
             console.log(diffDays);

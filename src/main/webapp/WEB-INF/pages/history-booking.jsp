@@ -47,6 +47,7 @@
                             <div class="panel-heading">
                                 <h3 class="panel-title">LỊCH Sử ĐẶT PHÒNG</h3>
                             </div>
+                            <span style="color: red">${message}</span>
                             <div class="panel-body">
                                 <table class="table table-hover">
                                     <thead>
@@ -88,8 +89,9 @@
                                             <a href="/booking/edit_booking?id=${booking.booking_id}" class="btn btn-default">
                                                 <span class="glyphicon glyphicon-edit"></span>
                                             </a>
-                                            <a href="" class="btn btn-default">
+                                            <a href="/booking/cancel_booking?booking_id=${booking.booking_id}" class="btn btn-default">
                                                 <span class="glyphicon glyphicon-remove"></span>
+                                                Hủy đặt phòng
                                             </a>
                                         </td>
                                     </tr>

@@ -12,6 +12,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -147,5 +148,39 @@ public class BookingController {
         Booking booking = bookingService.getBookById(id);
         mm.addAttribute("booking", booking);
         return "edit_booking";
+    }
+
+    @PostMapping("/booking/edit_booking")
+    public String edited_booking(@RequestParam int id_booking, WebRequest wr,
+                                 RedirectAttributes redirectAttributes) throws ParseException {
+        Booking booking = bookingService.getBookById(id_booking);
+        String customer_name = wr.getParameter("customer_name");
+        String phone = wr.getParameter("phone");
+        String address = wr.getParameter("address");
+        String d1 = wr.getParameter("check_in");
+        String d2 = wr.getParameter("check_out");
+        int price = Integer.parseInt(wr.getParameter("price"));
+        System.out.println(d1);
+        Date fDate = new SimpleDateFormat("MM/dd/yyyy").parse(d1);
+        Date sDate = new  SimpleDateFormat("MM/dd/yyyy").parse(d2);
+        booking.setCustomer_fullname(customer_name);
+        booking.setCustomer_phone(phone);
+        booking.setCustomer_address(address);
+        booking.setBooking_price(price);
+        booking.setCheck_in(fDate);
+        booking.setCheck_out(sDate);
+
+        bookingService.save(booking);
+        redirectAttributes.addFlashAttribute("message", "Thay đổi thông tin đăt phòng thành công!!");
+        return "redirect:/booking/history";
+    }
+
+    @GetMapping("/booking/cancel_booking")
+    public String cancel(@RequestParam int booking_id, RedirectAttributes r) {
+        Booking booking = bookingService.getBookById(booking_id);
+        booking.setBooking_status(3);
+        bookingService.save(booking);
+        r.addFlashAttribute("message", "Hủy đặt phòng thành công!");
+        return "redirect:/booking/history";
     }
 }
