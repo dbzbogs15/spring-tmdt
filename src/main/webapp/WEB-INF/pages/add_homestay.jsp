@@ -45,6 +45,7 @@
                                     <a href="${pageContext.servletContext.contextPath}/homestay/my_homestay">
                                         QUẢN LÝ HOMESTAY</a> > THÊM HOMESTAY</h3>
                             </div>
+                            <span style="color: red">${message}</span>
                             <div class="panel-body">
                                 <form action="${pageContext.servletContext.contextPath}/homestay/add_homestay"
                                       enctype="multipart/form-data"

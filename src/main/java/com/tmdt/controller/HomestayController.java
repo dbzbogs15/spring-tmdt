@@ -5,6 +5,7 @@ import com.tmdt.model.Users;
 import com.tmdt.service.HomestayService;
 import com.tmdt.service.LocationService;
 import com.tmdt.service.RoomService;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,6 +16,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
+import java.io.File;
+import java.util.List;
 
 @Controller
 public class HomestayController {
@@ -76,15 +80,40 @@ public class HomestayController {
     public String add_homestay_proc(WebRequest wr, HttpSession session,
                                     @RequestParam(value = "data_image") MultipartFile commons,
                                     RedirectAttributes rd, HttpServletRequest request) {
+        Users users = (Users) session.getAttribute("user");
         if(commons.isEmpty()) {
             rd.addFlashAttribute("message","Vui lòng thêm ảnh homestay !");
             return "redirect:/homestay/add_homestay";
         }
+        String homestay_name = request.getParameter("homestay_name");
+        String description = request.getParameter("homestay_description");
+        int address = Integer.parseInt(request.getParameter("homestay_location"));
         String nameFile = commons.getOriginalFilename();
-        if(!"".equals(nameFile)) {
 
-        }
+        Homestay homestay = new Homestay();
+        homestay.setHomestay_location(address);
+        homestay.setHomestay_description(description);
+        homestay.setHomestay_name(homestay_name);
+        homestay.setHomestay_master(users.getUser_name());
+        homestay.setHomestay_number_reviews(0);
+        homestay.setHomestay_reviews(0);
         String root = "resources/homestay";
+        String dirFile = request.getServletContext().getRealPath(root);
+        try {
+            homestayService.update(homestay);
+            List<Homestay> homestays = homestayService.findAll();
+            Homestay homestay1 = homestays.get(homestays.size() - 1);
+            int id = homestay1.getHomestay_id();
+            String name = "homestay_" + id + "." + FilenameUtils.getExtension(nameFile);
+            String newLink = dirFile + File.separator + name;
+            commons.transferTo(new File(newLink));
+            homestay1.setHomestay_image("homestay/" + name);
+            homestayService.update(homestay1);
+        } catch (Exception r) {
+            r.getStackTrace();
+            rd.addFlashAttribute("message","Vui fail ảnh !");
+            return "redirect:/homestay/add_homestay";
+        }
         System.out.println(request.getServletContext().getRealPath(root));
         System.out.println(nameFile);
 //        String homestay_name = wr.getParameter("homestay_name");

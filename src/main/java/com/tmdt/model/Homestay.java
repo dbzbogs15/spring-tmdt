@@ -14,7 +14,7 @@ import java.io.Serializable;
 @ToString
 public class Homestay implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "false")
     private int homestay_id;
     private String homestay_name;
     @Column(name = "homestay_image")
