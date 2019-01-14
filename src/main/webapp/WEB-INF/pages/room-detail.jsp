@@ -144,7 +144,7 @@
                                     <div class="tab-content">
                                         <div id="home" class="tab-pane fade in active">
                                             <div class="fb-like"
-                                                 data-href="/room/${room.room_id}"
+                                                 data-href="/room/search/${room.room_id}"
                                                  data-layout="button_count"
                                                  data-action="like" data-size="large"
                                                  data-show-faces="true">
@@ -156,7 +156,7 @@
                                                 out.print(scheme + "://" + url + ":" + port + "/room/search/");
                                             %>
                                             <div class="fb-share-button"
-                                                 data-href="/room/${room.room_id}"
+                                                 data-href="/room/search/${room.room_id}"
                                                  data-layout="button_count" data-size="large"
                                                  data-mobile-iframe="true">
                                                 <a target="_blank"
