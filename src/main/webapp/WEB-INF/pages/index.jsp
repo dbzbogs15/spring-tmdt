@@ -11,8 +11,8 @@
 <div class="colorlib-loader"></div>
 
 <div id="page">
-    <%@include file="components/navbar.jsp"%>
-    <%@include file="components/search.jsp"%>
+    <%@include file="components/navbar.jsp" %>
+    <%@include file="components/search.jsp" %>
     <div id="colorlib-hotel">
         <div class="container-fluid">
             <div class="row">
@@ -28,7 +28,8 @@
                         <c:forEach items="${homestay}" var="homestay">
                             <div class="item">
                                 <div class="hotel-entry">
-                                    <a href="${pageContext.servletContext.contextPath}/homestay?id=${homestay.homestay_id}" class="hotel-img"
+                                    <a href="${pageContext.servletContext.contextPath}/homestay?id=${homestay.homestay_id}"
+                                       class="hotel-img"
                                        style="background-image: url(${pageContext.servletContext.contextPath}/resources/${homestay.homestay_image});">
                                         <p class="price"><span>${homestay.location.location_name}</span>
                                         </p>
@@ -39,9 +40,10 @@
                                     <i class="icon-star-full"></i>
                                 </c:forEach>
                                 </span> ${homestay.homestay_reviews} Reviews</p>
-                                        <h3><a href="${pageContext.servletContext.contextPath}/homestay?id=${homestay.homestay_id}">
-                                                ${homestay.homestay_name}
-                                        </a></h3>
+                                        <h3>
+                                            <a href="${pageContext.servletContext.contextPath}/homestay?id=${homestay.homestay_id}">
+                                                    ${homestay.homestay_name}
+                                            </a></h3>
                                         <span class="place">${homestay.homestay_number_reviews} Lượt đánh giá</span>
                                         <p>${homestay.homestay_description}</p>
                                     </div>
@@ -53,7 +55,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-                    <h2>Các homestay được lụa chọn nhiều</h2>
+                    <h2>Các phòng được lụa chọn nhiều</h2>
                     <p>We love to tell our successful far far away, behind the word mountains, far from the countries
                         Vokalia and Consonantia, there live the blind texts.</p>
                 </div>
@@ -61,101 +63,30 @@
             <div class="row">
                 <div class="col-md-12 animate-box">
                     <div class="owl-carousel">
+                        <c:forEach items="${room}" var="room">
                         <div class="item">
                             <div class="hotel-entry">
-                                <a href="hotels.html" class="hotel-img"
-                                   style="background-image: url(${pageContext.servletContext.contextPath}/resources/images/hotel-1.jpg);">
-                                    <p class="price"><span>$120</span>
-                                        <small> /night</small>
+                                <a href="/room/search/${room.room_id}" class="hotel-img"
+                                   style="background-image: url(${pageContext.servletContext.contextPath}/resources/${room.room_image});">
+                                    <fmt:formatNumber var="price" pattern="###,###"
+                                                      value="${room.room_price}"
+                                                        type="number">
+                                    </fmt:formatNumber>
+                                    <p class="price"><span>${price}</span>
+                                        <small> /ngày</small>
                                     </p>
                                 </a>
                                 <div class="desc">
                                     <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i
                                             class="icon-star-full"></i><i class="icon-star-full"></i><i
                                             class="icon-star-full"></i></span> 545 Reviews</p>
-                                    <h3><a href="#">Hotel Edison</a></h3>
+                                    <h3><a href="/room/search/${room.room_id}">Hotel Edison</a></h3>
                                     <span class="place">New York, USA</span>
-                                    <p>A small river named Duden flows by their place and supplies it with the necessary
-                                        regelialia.</p>
+                                    <p>${room.room_describe}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="hotel-entry">
-                                <a href="hotels.html" class="hotel-img"
-                                   style="background-image: url(${pageContext.servletContext.contextPath}/resources/images/hotel-2.jpg);">
-                                    <p class="price"><span>$120</span>
-                                        <small> /night</small>
-                                    </p>
-                                </a>
-                                <div class="desc">
-                                    <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i
-                                            class="icon-star-full"></i><i class="icon-star-full"></i><i
-                                            class="icon-star-full"></i></span> 545 Reviews</p>
-                                    <h3><a href="#">Hotel Edison</a></h3>
-                                    <span class="place">New York, USA</span>
-                                    <p>A small river named Duden flows by their place and supplies it with the necessary
-                                        regelialia.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="hotel-entry">
-                                <a href="hotels.html" class="hotel-img"
-                                   style="background-image: url(${pageContext.servletContext.contextPath}/resources/images/hotel-2.jpg);">
-                                    <p class="price"><span>$120</span>
-                                        <small> /night</small>
-                                    </p>
-                                </a>
-                                <div class="desc">
-                                    <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i
-                                            class="icon-star-full"></i><i class="icon-star-full"></i><i
-                                            class="icon-star-full"></i></span> 545 Reviews</p>
-                                    <h3><a href="#">Hotel Edison</a></h3>
-                                    <span class="place">New York, USA</span>
-                                    <p>A small river named Duden flows by their place and supplies it with the necessary
-                                        regelialia.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="hotel-entry">
-                                <a href="hotels.html" class="hotel-img"
-                                   style="background-image: url(${pageContext.servletContext.contextPath}/resources/images/hotel-3.jpg);">
-                                    <p class="price"><span>$120</span>
-                                        <small> /night</small>
-                                    </p>
-                                </a>
-                                <div class="desc">
-                                    <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i
-                                            class="icon-star-full"></i><i class="icon-star-full"></i><i
-                                            class="icon-star-full"></i></span> 545 Reviews</p>
-                                    <h3><a href="#">Hotel Edison</a></h3>
-                                    <span class="place">New York, USA</span>
-                                    <p>A small river named Duden flows by their place and supplies it with the necessary
-                                        regelialia.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="hotel-entry">
-                                <a href="hotels.html" class="hotel-img"
-                                   style="background-image: url(${pageContext.servletContext.contextPath}/resources/images/hotel-4.jpg);">
-                                    <p class="price"><span>$120</span>
-                                        <small> /night</small>
-                                    </p>
-                                </a>
-                                <div class="desc">
-                                    <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i
-                                            class="icon-star-full"></i><i class="icon-star-full"></i><i
-                                            class="icon-star-full"></i></span> 545 Reviews</p>
-                                    <h3><a href="#">Hotel Edison</a></h3>
-                                    <span class="place">New York, USA</span>
-                                    <p>A small river named Duden flows by their place and supplies it with the necessary
-                                        regelialia.</p>
-                                </div>
-                            </div>
-                        </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
@@ -185,6 +116,6 @@
             </div>
         </div>
     </div>
-    <%@include file="components/footer.jsp" %>
+        <%@include file="components/footer.jsp" %>
 </body>
 </html>

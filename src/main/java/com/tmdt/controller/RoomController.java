@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,7 @@ public class RoomController {
                          @RequestParam(value = "check-in") String c_in,
                          @RequestParam(value = "check-out") String c_out,
                          @RequestParam(value = "guest") String guest,
-                         HttpSession session,
+                         HttpSession session, HttpServletRequest request,
                          ModelMap mm) {
         if (c_in.length() > 0 && c_out.length() > 0) {
             session.setAttribute("check_in", c_in);
@@ -72,6 +73,7 @@ public class RoomController {
         mm.addAttribute("location", locationService.findAll());
         mm.addAttribute("location_s", location);
         mm.addAttribute("room", result);
+        mm.addAttribute("link", "");
         return "room";
     }
 

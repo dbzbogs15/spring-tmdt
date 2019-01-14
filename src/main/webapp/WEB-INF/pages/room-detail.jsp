@@ -143,8 +143,27 @@
 
                                     <div class="tab-content">
                                         <div id="home" class="tab-pane fade in active">
+                                            <div class="fb-like"
+                                                 data-href="/room/${room.room_id}"
+                                                 data-layout="button_count"
+                                                 data-action="like" data-size="large"
+                                                 data-show-faces="true">
+                                            </div>
+                                            <%
+                                                String url = request.getServerName();
+                                                String scheme = request.getScheme();
+                                                int port = request.getServerPort();
+                                                out.print(scheme + "://" + url + ":" + port + "/room/search/");
+                                            %>
+                                            <div class="fb-share-button"
+                                                 data-href="/room/${room.room_id}"
+                                                 data-layout="button_count" data-size="large"
+                                                 data-mobile-iframe="true">
+                                                <a target="_blank"
+                                                   href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
+                                                   class="fb-xfbml-parse-ignore">Chia sẻ</a>
+                                            </div>
                                             <h2 style="text-align:center">Ảnh căn hộ</h2>
-
                                             <div class="container" style="width: 100%">
                                                 <div class="mySlides">
                                                     <div class="numbertext">1 / 6</div>
