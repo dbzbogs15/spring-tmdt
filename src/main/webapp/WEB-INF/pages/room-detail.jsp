@@ -143,32 +143,13 @@
 
                                     <div class="tab-content">
                                         <div id="home" class="tab-pane fade in active">
-                                            <%--<div class="fb-like"--%>
-                                                 <%--data-href="/room/search/${room.room_id}"--%>
-                                                 <%--data-layout="button_count"--%>
-                                                 <%--data-action="like" data-size="large"--%>
-                                                 <%--data-show-faces="true">--%>
-                                            <%--</div>--%>
+
                                             <div class="fb-like"
-                                                 data-href="/room/search/${room.room_id}"
+                                                 data-href="http://ngohongthai.herokuapp.com/room/search/${room.room_id}"
                                                  data-width="300" data-layout="button_count"
-                                                 data-action="like" data-size="small"
+                                                 data-action="like" data-size="large"
                                                  data-show-faces="false"
                                                  data-share="true">
-                                            </div>
-                                            <%
-                                                String url = request.getServerName();
-                                                String scheme = request.getScheme();
-                                                int port = request.getServerPort();
-                                                out.print(scheme + "://" + url + ":" + port + "/room/search/");
-                                            %>
-                                            <div class="fb-share-button"
-                                                 data-href="/room/search/${room.room_id}"
-                                                 data-layout="button_count" data-size="large"
-                                                 data-mobile-iframe="true">
-                                                <a target="_blank"
-                                                   href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
-                                                   class="fb-xfbml-parse-ignore">Chia sẻ</a>
                                             </div>
                                             <h2 style="text-align:center">Ảnh căn hộ</h2>
                                             <div class="container" style="width: 100%">
@@ -290,13 +271,11 @@
 </div>
 <%@include file="components/footer.jsp" %>
 <div id="fb-root"></div>
-<script>(function (d, s, id) {
+<script>(function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id))
-        return;
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.9&appId=1572382689439772";
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=205308183714279&autoLogAppEvents=1';
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 <script>
