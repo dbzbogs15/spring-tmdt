@@ -143,11 +143,18 @@
 
                                     <div class="tab-content">
                                         <div id="home" class="tab-pane fade in active">
+                                            <%--<div class="fb-like"--%>
+                                                 <%--data-href="/room/search/${room.room_id}"--%>
+                                                 <%--data-layout="button_count"--%>
+                                                 <%--data-action="like" data-size="large"--%>
+                                                 <%--data-show-faces="true">--%>
+                                            <%--</div>--%>
                                             <div class="fb-like"
                                                  data-href="/room/search/${room.room_id}"
-                                                 data-layout="button_count"
-                                                 data-action="like" data-size="large"
-                                                 data-show-faces="true">
+                                                 data-width="300" data-layout="button_count"
+                                                 data-action="like" data-size="small"
+                                                 data-show-faces="false"
+                                                 data-share="true">
                                             </div>
                                             <%
                                                 String url = request.getServerName();
