@@ -77,11 +77,8 @@
                                     </p>
                                 </a>
                                 <div class="desc">
-                                    <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i
-                                            class="icon-star-full"></i><i class="icon-star-full"></i><i
-                                            class="icon-star-full"></i></span> 545 Reviews</p>
-                                    <h3><a href="/room/search/${room.room_id}">Hotel Edison</a></h3>
-                                    <span class="place">New York, USA</span>
+                                    <h3><a href="/room/search/${room.room_id}">${room.room_name}</a></h3>
+                                    <span class="place">${room.room_name}</span>
                                     <p>${room.room_describe}</p>
                                 </div>
                             </div>

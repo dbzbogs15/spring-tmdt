@@ -51,7 +51,6 @@ public class MainController {
         mm.addAttribute("homestay", arr);
         mm.addAttribute("location", locationService.findAll());
 
-        List<Homestay> topHomestay = new ArrayList<>();
         List<Booking> bookings = bookingService.getAllBooking();
         Map<Integer, Integer> maps = new HashMap<>();
         for(Booking booking : bookings) {
@@ -66,8 +65,12 @@ public class MainController {
         maps.forEach((k,v)->
                         listRoom.add(k)
                 );
-        listRoom.forEach((i) ->
+        Collections.sort(listRoom);
+        Collections.reverse(listRoom);
+        ;
+        listRoom.subList(0,3).forEach((i) ->
                 listBestRoom.add(roomService.getOne(i))
+
         );
         mm.addAttribute("room",listBestRoom);
         return "index";
