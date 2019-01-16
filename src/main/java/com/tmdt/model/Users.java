@@ -35,4 +35,5 @@ public class Users {
     private String user_card_number;
     @Temporal(TemporalType.DATE)
     private Date user_date_of_birth;
+    private String reset_token;
 }

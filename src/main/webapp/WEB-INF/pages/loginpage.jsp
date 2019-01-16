@@ -29,6 +29,8 @@
                         <input type="submit" value="Đăng Nhập" class="btn btn-primary">
                     </div>
                 </form>
+                <a href="/forgot" style="color: #0000cc">Quên mật khẩu</a> hoặc
+                <a href="/register" style="color: #0000cc">Đăng ký</a>
             </div>
         </div>
     </div>

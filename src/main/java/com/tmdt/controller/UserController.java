@@ -37,7 +37,7 @@ public class UserController {
         System.out.println(birth);
         Date user_date_of_birth = new SimpleDateFormat("yyyy-dd-MM").parse(birth);
         Users u = new Users(user_name, user_password, user_email, user_created, user_fullname,
-                user_phone, user_address, user_type, user_card_number, user_date_of_birth);
+                user_phone, user_address, user_type, user_card_number, user_date_of_birth, null);
         List<Users> list = userService.findAll();
         for(Users us : list) {
             if(us.getUser_name().equalsIgnoreCase(user_name)) {
