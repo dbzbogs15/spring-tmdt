@@ -53,7 +53,7 @@ public class PasswordController {
 
             emailService.send(passwordResetEmail);
             System.out.println("Đã gửi mail");
-            rd.addFlashAttribute("message", "Một email vừa gửi vào email của bạn, vui lòng kiểm tra để reset mật khẩu !");
+            rd.addFlashAttribute("message", "Một link vừa gửi vào email của bạn, vui lòng kiểm tra để reset mật khẩu !");
         }
         return "redirect:/login";
     }
