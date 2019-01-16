@@ -30,7 +30,8 @@ public class PasswordController {
     }
 
     @PostMapping(value = "/forgot")
-    public String processForgotPasswordForm(@RequestParam("email") String userEmail) {
+    public String processForgotPasswordForm(@RequestParam("email") String userEmail,
+                                            RedirectAttributes rd) {
         Optional<Users> optional = userService.findUserByEmail(userEmail);
         if(!optional.isPresent()) {
             System.out.println("Không tìm thấy email");
@@ -52,8 +53,9 @@ public class PasswordController {
 
             emailService.send(passwordResetEmail);
             System.out.println("Đã gửi mail");
+            rd.addFlashAttribute("message", "Một email vừa gửi vào email của bạn, vui lòng kiểm tra để reset mật khẩu !")
         }
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @GetMapping(value = "/reset")
