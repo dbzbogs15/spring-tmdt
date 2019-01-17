@@ -53,7 +53,7 @@ public class PasswordController {
 
             emailService.send(passwordResetEmail);
             System.out.println("Đã gửi mail");
-            rd.addFlashAttribute("message", "Một link vừa gửi vào email của bạn, vui lòng kiểm tra để reset mật khẩu !");
+            rd.addFlashAttribute("message", "Một liên kết vừa gửi vào hộp thư của bạn, vui lòng kiểm tra esmail để reset mật khẩu !");
         }
         return "redirect:/login";
     }
@@ -91,7 +91,7 @@ public class PasswordController {
 
             // In order to set a model attribute on a redirect, we must use
             // RedirectAttributes
-            redir.addFlashAttribute("message", "You have successfully reset your password.  You may now login.");
+            redir.addFlashAttribute("message", "Bạn đã thiết lập lại mật khẩu thành công. Bây giờ bạn có thể đăng nhập.");
             System.out.println("Đổi mk thành công");
             return "redirect:/login";
         } else {
