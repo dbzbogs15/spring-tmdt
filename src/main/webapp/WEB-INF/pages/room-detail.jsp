@@ -151,57 +151,46 @@
                                                  data-show-faces="false"
                                                  data-share="true">
                                             </div>
-                                            <%--<fb:like href="http://ngohongthai.herokuapp.com/room/search/${room.room_id}" showfaces="false" layout="button_count" action="like"></fb:like></div>--%>
-                                        <div class="social-ring-button"><a href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http://lienminh360.vn/cam-nang/meo-an-rung-than-toc-trong-dot-kich-nha-chinh/" target="_blank"
-                                                                           onclick="window.open('https://www.facebook.com/sharer/sharer.php?s=100&p[url]=http://lienminh360.vn/cam-nang/meo-an-rung-than-toc-trong-dot-kich-nha-chinh/', 'newwindow', 'width=600, height=450'); return false;" >
-                                            <h2 style="text-align:center">Ảnh căn hộ</h2>
-                                            <div class="container" style="width: 100%">
-                                                <div class="mySlides">
-                                                    <div class="numbertext">1 / 6</div>
-                                                    <img src="${pageContext.servletContext.contextPath}/resources/${room.room_image}"
-                                                         style="width:100%">
-                                                </div>
+                                        <h2 style="text-align:center">Ảnh căn hộ</h2>
+                                        <div class="container" style="width: 100%">
+                                            <div class="mySlides">
+                                                <div class="numbertext">1 / 6</div>
+                                                <img src="${pageContext.servletContext.contextPath}/resources/${room.room_image}"
+                                                     style="width:100%">
+                                            </div>
+                                            <a class="prev" onclick="plusSlides(-1)">❮</a>
+                                            <a class="next" onclick="plusSlides(1)">❯</a>
 
-                                                <%--<div class="mySlides">--%>
-                                                <%--<div class="numbertext">2 / 6</div>--%>
-                                                <%--<img src="https://www.w3schools.com/howto/img_5terre_wide.jpg"--%>
-                                                <%--style="width:100%">--%>
-                                                <%--</div>--%>
+                                            <div class="caption-container">
+                                                <p id="caption"></p>
+                                            </div>
 
-                                                <a class="prev" onclick="plusSlides(-1)">❮</a>
-                                                <a class="next" onclick="plusSlides(1)">❯</a>
-
-                                                <div class="caption-container">
-                                                    <p id="caption"></p>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="column">
-                                                        <img class="demo cursor"
-                                                             src="${pageContext.servletContext.contextPath}/resources/${room.room_image}"
-                                                             style="width:100%" onclick="currentSlide(1)"
-                                                             alt="Phòng khách">
-                                                    </div>
+                                            <div class="row">
+                                                <div class="column">
+                                                    <img class="demo cursor"
+                                                         src="${pageContext.servletContext.contextPath}/resources/${room.room_image}"
+                                                         style="width:100%" onclick="currentSlide(1)"
+                                                         alt="Phòng khách">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="menu1" class="tab-pane fade">
-                                            <div class="alert alert-success">
-                                                ${room.room_information}
-                                            </div>
+                                    </div>
+                                    <div id="menu1" class="tab-pane fade">
+                                        <div class="alert alert-success">
+                                            ${room.room_information}
                                         </div>
-                                        <div id="menu2" class="tab-pane fade">
-                                            <div class="alert alert-success">
-                                                <div class="fb-comments"
-                                                     data-href="http://ngohongthai.herokuapp.com/${room.room_id}"
-                                                     data-numposts="5" data-width="100%"></div>
-                                            </div>
+                                    </div>
+                                    <div id="menu2" class="tab-pane fade">
+                                        <div class="alert alert-success">
+                                            <div class="fb-comments"
+                                                 data-href="http://ngohongthai.herokuapp.com/${room.room_id}"
+                                                 data-numposts="5" data-width="100%"></div>
                                         </div>
-                                        <div id="menu3" class="tab-pane fade">
-                                            <div class="alert alert-success">
-                                                <strong>Success!</strong> You should <a href="#" class="alert-link">read
-                                                this message</a>.
-                                            </div>
+                                    </div>
+                                    <div id="menu3" class="tab-pane fade">
+                                        <div class="alert alert-success">
+                                            <strong>Success!</strong> You should <a href="#" class="alert-link">read
+                                            this message</a>.
                                         </div>
                                     </div>
                                 </div>
@@ -210,74 +199,79 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- SIDEBAR-->
-            <div class="col-md-3">
-                <div class="sidebar-wrap">
-                    <div class="side search-wrap animate-box">
-                        <h3 class="sidebar-heading">Tìm căn hộ cho bạn</h3>
-                        <form method="get" action="${pageContext.servletContext.contextPath}/booking" class="colorlib-form">
-                            <div class="row">
-                                <input type="hidden" name="room_id" value="${room.room_id}">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="date">Ngày nhận:</label>
-                                        <div class="form-field">
-                                            <i class="icon icon-calendar2"></i>
-                                            <input type="text" name="c_in" value="${sessionScope.check_in}" id="date"
-                                                   class="form-control date"
-                                                   autocomplete="off"
-                                                   placeholder="Ngày nhận">
-                                        </div>
+        <!-- SIDEBAR-->
+        <div class="col-md-3">
+            <div class="sidebar-wrap">
+                <div class="side search-wrap animate-box">
+                    <h3 class="sidebar-heading">Tìm căn hộ cho bạn</h3>
+                    <form method="get" action="${pageContext.servletContext.contextPath}/booking" class="colorlib-form">
+                        <div class="row">
+                            <input type="hidden" name="room_id" value="${room.room_id}">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="date">Ngày nhận:</label>
+                                    <div class="form-field">
+                                        <i class="icon icon-calendar2"></i>
+                                        <input type="text" name="c_in" value="${sessionScope.check_in}" id="date"
+                                               class="form-control date"
+                                               autocomplete="off"
+                                               placeholder="Ngày nhận">
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="date">Ngày trả: </label>
-                                        <div class="form-field">
-                                            <i class="icon icon-calendar2"></i>
-                                            <input type="text"
-                                                   autocomplete="off"
-                                                   name="c_out" value="${sessionScope.check_out}" id="date" class="form-control date"
-                                                   placeholder="Ngày trả">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="guests">Số người</label>
-                                        <div class="form-field">
-                                            <i class="icon icon-arrow-down3"></i>
-                                            <select name="guest" id="people" class="form-control">
-                                                <c:forEach var="i" begin="1" end="5">
-                                                    <option
-                                                            <c:if test="${sessionScope.guest == i}">
-                                                                selected
-                                                            </c:if>
-                                                            value="${i}">${i}</option>
-                                                </c:forEach>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <input type="submit" name="submit" id="submit" value="Đặt phòng này"
-                                           class="btn btn-primary btn-block">
                                 </div>
                             </div>
-                        </form>
-                    </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="date">Ngày trả: </label>
+                                    <div class="form-field">
+                                        <i class="icon icon-calendar2"></i>
+                                        <input type="text"
+                                               autocomplete="off"
+                                               name="c_out" value="${sessionScope.check_out}" id="date"
+                                               class="form-control date"
+                                               placeholder="Ngày trả">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="guests">Số người</label>
+                                    <div class="form-field">
+                                        <i class="icon icon-arrow-down3"></i>
+                                        <select name="guest" id="people" class="form-control">
+                                            <c:forEach var="i" begin="1" end="5">
+                                                <option
+                                                        <c:if test="${sessionScope.guest == i}">
+                                                            selected
+                                                        </c:if>
+                                                        value="${i}">${i}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="submit" name="submit" id="submit" value="Đặt phòng này"
+                                       class="btn btn-primary btn-block">
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+</div>
 <%@include file="components/footer.jsp" %>
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement(s); js.id = id;
+    if (d.getElementById(id)) {
+        return;
+    }
+    js = d.createElement(s);
+    js.id = id;
     js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
