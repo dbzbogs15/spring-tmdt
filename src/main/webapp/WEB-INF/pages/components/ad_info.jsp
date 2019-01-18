@@ -50,6 +50,11 @@
                             <span class="glyphicon glyphicon-pencil"></span>
                             Thay đổi thông tin
                         </a>
+                        <a href="${pageContext.servletContext.contextPath}/ucp"
+                           class="btn br btn-default" style="border-radius: 0; width: 100%; text-align: left">
+                            <span class="glyphicon glyphicon-cog"></span>
+                            Đổi mật khẩu
+                        </a>
                         <a href="${pageContext.servletContext.contextPath}/booking/history"
                            class="btn br btn-default" style="border-radius: 0; width: 100%; text-align: left">
                             <span class="glyphicon glyphicon-check"></span>
