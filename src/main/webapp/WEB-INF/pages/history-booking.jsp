@@ -14,15 +14,6 @@
     <%--
 </c:if>
 --%>
-    <style>
-        .btn {
-            margin-bottom: 0;
-            font-size: 16px;
-        }
-        .btn-sm {
-            font-size: 12px;
-        }
-    </style>
 </head>
 <body>
 <%@include file="components/navbar.jsp" %>
@@ -45,7 +36,7 @@
 
                         <div class="panel panel-info">
                             <div class="panel-heading">
-                                <h3 class="panel-title">LỊCH Sử ĐẶT PHÒNG</h3>
+                                <h3 class="panel-title">LỊCH SỬ ĐẶT PHÒNG</h3>
                             </div>
                             <span style="color: red">${message}</span>
                             <div class="panel-body">

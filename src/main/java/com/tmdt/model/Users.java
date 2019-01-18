@@ -31,7 +31,7 @@ public class Users {
     private String user_phone;
     @NotBlank
     private String user_address;
-    private String user_type;
+    private String user_image;
     private String user_card_number;
     @Temporal(TemporalType.DATE)
     private Date user_date_of_birth;

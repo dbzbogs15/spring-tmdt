@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-md-12">
                         <hr>
-                        <a href="${pageContext.servletContext.contextPath}/booking/history"
+                        <a href="${pageContext.servletContext.contextPath}/ucp"
                            class="btn br btn-default" style="border-radius: 0; width: 100%; text-align: left">
                             <span class="glyphicon glyphicon-pencil"></span>
                             Thay đổi thông tin

@@ -5,6 +5,7 @@ import com.tmdt.model.Users;
 import com.tmdt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
@@ -31,13 +32,13 @@ public class UserController {
         String user_fullname = request.getParameter("fullname");
         String user_phone = request.getParameter("phone");
         String user_address = request.getParameter("address");
-        String user_type = request.getParameter("");
+        String user_image = request.getParameter("");
         String user_card_number = request.getParameter("card");
         String birth = request.getParameter("birth");
         System.out.println(birth);
         Date user_date_of_birth = new SimpleDateFormat("yyyy-dd-MM").parse(birth);
         Users u = new Users(user_name, user_password, user_email, user_created, user_fullname,
-                user_phone, user_address, user_type, user_card_number, user_date_of_birth, null);
+                user_phone, user_address, user_image, user_card_number, user_date_of_birth, null);
         List<Users> list = userService.findAll();
         for(Users us : list) {
             if(us.getUser_name().equalsIgnoreCase(user_name)) {
@@ -86,10 +87,37 @@ public class UserController {
         return "loginpage";
     }
 
-    @GetMapping("logout")
+    @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.removeAttribute("user");
         session.invalidate();
         return "redirect:/";
+    }
+
+    @GetMapping("/ucp")
+    public String ucp() {
+        return "ucp";
+    }
+
+    @PostMapping("/ucp")
+    public String ucp_update(WebRequest wr, RedirectAttributes rd,
+                             HttpSession session) {
+        String mail = wr.getParameter("email");
+        String name = wr.getParameter("name");
+        String address = wr.getParameter("address");
+        String phone = wr.getParameter("phone");
+
+        Users users = (Users) session.getAttribute("user");
+
+        users.setUser_address(address);
+        users.setUser_fullname(name);
+        users.setUser_phone(phone);
+        users.setUser_email(mail);
+
+        //Update user
+        userService.save(users);
+//        session.setAttribute("user", users.getUser_name());
+        rd.addFlashAttribute("message", "Thay đổi thông tin thành công!");
+        return "redirect:/ucp";
     }
 }
