@@ -50,7 +50,7 @@
                             <span class="glyphicon glyphicon-pencil"></span>
                             Thay đổi thông tin
                         </a>
-                        <a href="${pageContext.servletContext.contextPath}/ucp"
+                        <a href="${pageContext.servletContext.contextPath}/change_pwd"
                            class="btn br btn-default" style="border-radius: 0; width: 100%; text-align: left">
                             <span class="glyphicon glyphicon-cog"></span>
                             Đổi mật khẩu

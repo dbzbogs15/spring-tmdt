@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -98,5 +99,31 @@ public class PasswordController {
             mm.addAttribute("message", "Oops!  This is an invalid password reset link.");
             return "resetPassword";
         }
+    }
+    @GetMapping("/change_pwd")
+    public String change() {
+        return "changePassword";
+    }
+
+    @ResponseBody
+    @PostMapping("/change_pwd")
+    public String exc_change(WebRequest wr, HttpSession session) {
+        String pwd = MD5.md5(wr.getParameter("old_pwd"));
+        String new_pwd = wr.getParameter("new_pwd");
+        String confirm_pwd = wr.getParameter("confirm_pwd");
+        System.out.println("Old: " + pwd);
+        Users users = (Users) session.getAttribute("user");
+        if(!pwd.equals(users.getUser_password())) {
+            return "Mật khẩu cũ không chính xác!";
+        }
+        if(!new_pwd.equals(confirm_pwd)) {
+            return "Xác nhận mật khẩu không trùng khớp !";
+        }
+        if(pwd.equals(users.getUser_password()) && new_pwd.equals(confirm_pwd)) {
+            users.setUser_password(MD5.md5(new_pwd));
+            userService.save(users);
+            return "Mật khẩu thay đổi thành công!";
+        }
+        return "Error";
     }
 }
