@@ -56,16 +56,16 @@
                             <div class="panel-heading">
                                 <h3 class="panel-title">THÔNG TIN CÁ NHÂN</h3>
                             </div>
-                            <span style="color: red">${message}</span>
+                            <h3 style="color: red; margin-left: 150px">${message}</h3>
                             <div class="panel-body">
                                 <form action="/ucp"
                                       enctype="multipart/form-data"
                                       method="post">
                                     <div class="form-group form-group-sm">
                                         <div class="col-sm-offset-2">
-                                            <img src="/resources/${sessionScope.user.user_image}"
+                                            <img src="${sessionScope.user.user_image}"
                                                  id="imgshow"
-                                                 style="width: 587px; margin-left: 13px"
+                                                 style="width: 587px; height: 587px; margin-left: 13px"
                                                  class="thumbnail">
                                         </div>
                                     </div>
@@ -139,6 +139,7 @@
                 var reader = new FileReader();
                 reader.onload = function (e) {
                     $('#imgshow').attr('src', e.target.result);
+                    $('#imgshow1').attr('src', e.target.result);
                 }
                 reader.readAsDataURL(this.files[0]);
             }

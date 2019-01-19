@@ -109,12 +109,13 @@ public class ServiceController {
                 RegisterService r = new RegisterService();
                 Users u = (Users) session.getAttribute("user");
                 Calendar cal = Calendar.getInstance();
+                r.setDate_started(cal.getTime());
                 System.out.println("Ngày đầu:" + cal.getTime());
                 int homestay_id = (int) session.getAttribute("current_homestay");
                 int service_id =(int) session.getAttribute("current_service");
                 for(RegisterService r2 : regService.findDate()) {
-                    r2.getHomestay().getUsers().getUser_name();
-                    if(r2.getHomestay().getUsers().getUser_name().equals(u.getUser_name())) {
+                    if(r2.getHomestay().getUsers().getUser_name().equals(u.getUser_name()) &&
+                        r2.getHomestay_id() == homestay_id) {
                         cal.setTime(r2.getDate_finished());
                         System.out.println("Sau khi set:" + cal.getTime());
                     }
@@ -122,7 +123,6 @@ public class ServiceController {
                 System.out.println("Ngoài dòng for: " + cal.getTime());
                 r.setHomestay_id(homestay_id);
 
-                r.setDate_started(cal.getTime());
                 if(service_id == 0) {
                     cal.add(Calendar.MONTH, 1);
                     r.setDate_finished(cal.getTime());
@@ -135,6 +135,8 @@ public class ServiceController {
                 }
                 r.setService_id(service_id);
                 r.setPrice(buyService.getById(service_id).getService_price());
+                r.setPayerID(payerId);
+                r.setPaymentID(paymentId);
                 regService.add_regService(r);
                 ra.addFlashAttribute("message","Bạn đã thanh toán thành công !");
                 return "redirect:/service";

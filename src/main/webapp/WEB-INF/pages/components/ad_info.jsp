@@ -13,21 +13,29 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="date">Họ tên:
+                                <img src="${sessionScope.user.user_image}"
+                                     class="img-thumbnail"
+                                     id="imgshow1"
+                                     width="100%" height="220.5px">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Họ tên:
                                 <span class="check-date">${sessionScope.user.user_fullname}</span>
                             </label>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="date">Địa chỉ:
+                            <label>Địa chỉ:
                                 <span class="check-date">${sessionScope.user.user_address}</span>
                             </label>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="date">Số điện thoại:
+                            <label>Số điện thoại:
                                 <span class="check-date">
                                     ${sessionScope.user.user_phone}
                                 </span>
@@ -36,7 +44,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="date">Email:
+                            <label>Email:
                                 <span class="check-date">
                                     ${sessionScope.user.user_email}
                                 </span>

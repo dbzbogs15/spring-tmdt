@@ -1,6 +1,7 @@
 <%@ page import="com.tmdt.model.Homestay" %>
 <%@ page import="com.tmdt.model.RegisterService" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.Collections" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -42,8 +43,9 @@
             <div class="col-md-9">
                 <div class="row">
                     <div class="wrap-division">
-                        <h1>${message}</h1>
+
                         <c:if test="${message != null}">
+                            <h1>${message}</h1>
                             <a href="#lichsu"
                                 class="btn btn-default">
                                 Click để xem chi tiết
@@ -66,7 +68,7 @@
                                                         <fmt:formatNumber pattern="###,###"
                                                                           type="number"
                                                                           value="${service.service_price}"/>
-                                                        VNĐ
+                                                        $
                                                     </p>
                                                     <a class="btn btn-default" data-toggle="modal"
                                                        data-target="#${service.service_id}">
@@ -111,6 +113,12 @@
                                                                     <input type="hidden"
                                                                            name="price"
                                                                            value="${service.service_price}"/>
+                                                                </div>
+                                                                <div class="col-sm-offset-1 col-sm-10">
+                                                                    <h3 style="color: blue;">
+                                                                        <span class="glyphicon glyphicon-hand-right"></span>
+                                                                        Nếu homestay vẫn còn thời gian chạy quảng cáo thì sẽ cộng dồn thời khi đăng ký thêm
+                                                                    </h3>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -178,6 +186,7 @@
                                         List<Integer> running = (List<Integer>) request.getAttribute("running");
                                         List<RegisterService> reg = (List<RegisterService>) request.getAttribute("reg");
                                         List<RegisterService> runObj = (List<RegisterService>) request.getAttribute("runObj");
+                                        Collections.reverse(runObj);
                                         for (Homestay h : homestays) {
                                     %>
                                     <div class="col-md-4">
@@ -215,7 +224,8 @@
                                                             if (running.contains(h.getHomestay_id())) {
                                                                 for (RegisterService r : runObj) {
                                                                     if (r.getHomestay_id() == h.getHomestay_id()) {
-                                                                        out.print("Ngày đăng ký: " + r.getDate_finished());
+                                                                        out.print("Ngày kết thúc: " + r.getDate_finished());
+                                                                        break;
                                                                     }
                                                                 }
                                                             } else {

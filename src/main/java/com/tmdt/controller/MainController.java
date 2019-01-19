@@ -72,6 +72,7 @@ public class MainController {
                 listBestRoom.add(roomService.getOne(i))
 
         );
+        System.out.println(Calendar.getInstance().getTime());
         mm.addAttribute("room",listBestRoom);
         return "index";
     }

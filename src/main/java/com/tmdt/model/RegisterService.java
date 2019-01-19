@@ -23,6 +23,8 @@ public class RegisterService {
     @Temporal(TemporalType.DATE)
     private Date date_finished;
     private int price;
+    private String paymentID;
+    private String payerID;
 
     @OneToOne
     @JoinColumn(name = "homestay_id", insertable = false, updatable = false)
