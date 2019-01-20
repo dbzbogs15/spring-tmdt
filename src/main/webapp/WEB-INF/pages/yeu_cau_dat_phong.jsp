@@ -29,7 +29,7 @@
     <div class="container" style="margin-top: 50px">
         <div class="row">
             <!-- SIDEBAR-->
-            <%@include file="components/ad_info.jsp"%>
+            <%@include file="components/ad_info.jsp" %>
             <div class="col-md-9">
                 <div class="row">
                     <div class="wrap-division">
@@ -50,33 +50,39 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach varStatus="loop" var="list" items="${list}">
-                                            <tr>
-                                                <td>${loop.index}</td>
-                                                <td>${list.users.user_fullname}</td>
-                                                <td width="30%">${list.room.room_name}</td>
-                                                <td>${list.check_in}</td>
-                                                <td>
-                                                    <c:choose>
-                                                        <c:when test="${list.booking_status == 1}">
+                                    <c:forEach varStatus="loop" var="list" items="${list}">
+                                        <tr>
+                                            <td>${loop.index}</td>
+                                            <td>${list.users.user_fullname}</td>
+                                            <td width="30%">${list.room.room_name}</td>
+                                            <td>${list.check_in}</td>
+                                            <td>
+                                                <c:choose>
+                                                    <c:when test="${list.booking_status == 1}">
+                                                        <button class="btn  btn-success">
                                                             Đã thanh toán
-                                                        </c:when>
-                                                        <c:when test="${list.booking_status == 2}">
+                                                        </button>
+                                                    </c:when>
+                                                    <c:when test="${list.booking_status == 2}">
+                                                        <button class="btn btn-warning">
                                                             Đang chờ
-                                                        </c:when>
-                                                        <c:otherwise>
+                                                        </button>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <button class="btn btn-danger">
                                                             Đã hủy
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </td>
-                                                <td>
-                                                    <a href="${pageContext.servletContext.contextPath}/booking/ad/edit/${list.booking_id}"
-                                                            class="btn btn-default">
-                                                        <span class="glyphicon glyphicon-info-sign"></span> Chi tiết
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
+                                                        </button>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </td>
+                                            <td>
+                                                <a href="${pageContext.servletContext.contextPath}/booking/ad/edit/${list.booking_id}"
+                                                   class="btn btn-default">
+                                                    <span class="glyphicon glyphicon-info-sign"></span> Chi tiết
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>

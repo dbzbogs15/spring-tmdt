@@ -48,94 +48,142 @@
                                     <div class="form-horizontal">
                                         <div class="form-group form-group-sm">
                                             <label class="col-sm-3 control-label">Tài khoản đặt phòng</label>
-                                            <div class="col-sm-7">
+                                            <div class="col-sm-7" style="margin-left: -8px">
                                                 <input class="form-control" value="${booking.users.user_fullname}"
                                                        disabled
                                                        type="text" placeholder="Tên">
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-group-sm">
-                                            <label class="col-sm-3 control-label">Ngày đặt phòng</label>
-                                            <div class="col-sm-7">
-                                                <input disabled class="form-control" value="${booking.created}"
-                                                       type="text" placeholder="Email address">
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-group-sm">
-                                            <label class="col-sm-3 control-label">Ngày nhận</label>
-                                            <div class="col-sm-7">
-                                                <input class="form-control" value="${booking.check_in}"
-                                                       type="date" name="fdate" placeholder="Địa chỉ">
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-group-sm">
-                                            <label class="col-sm-3 control-label">Ngày trả</label>
-                                            <div class="col-sm-7">
-                                                <input class="form-control" value="${booking.check_out}"
-                                                       type="date" name="sdate" placeholder="Địa chỉ">
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="form-group form-group-sm">
-                                            <label class="col-sm-3 control-label">Tên khách hàng</label>
-                                            <div class="col-sm-7">
-                                                <input class="form-control" value="${booking.customer_fullname}"
-                                                       type="text" name="fullname" placeholder="Địa chỉ">
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-group-sm">
-                                            <label class="col-sm-3 control-label">Số điện thoại</label>
-                                            <div class="col-sm-7">
-                                                <input class="form-control" value="${booking.customer_phone}"
-                                                       type="text" name="phone" placeholder="Địa chỉ">
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-group-sm">
-                                            <label class="col-sm-3 control-label">Giá</label>
-                                            <div class="col-sm-7">
-                                                <input class="form-control" value="${booking.booking_price}"
-                                                       type="number" name="price" placeholder="Địa chỉ">
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-group-sm">
-                                            <label class="col-sm-3 control-label">Trạng thái</label>
-                                            <div class="col-sm-7">
-                                                <select class="form-control" name="status">
-                                                    <c:forEach var="i" begin="1" end="3">
-                                                        <option value="${i}"
+                                                <div style="margin-top: 10px">
+                                                    <i class="glyphicon glyphicon-hand-right"></i>
+                                                    <a style="color: #0000cc" data-toggle="modal"
+                                                       data-target="#myModal">
+                                                        Xem thông tin cá nhân
+                                                    </a>
+                                                </div>
+                                                <!-- Modal -->
+                                                <div id="myModal" class="modal fade" role="dialog">
+                                                    <div class="modal-dialog">
 
-                                                                <c:if test="${i == booking.booking_status}">
-                                                                    selected
-                                                                </c:if>
+                                                        <!-- Modal content-->
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close"
+                                                                        data-dismiss="modal">&times;
+                                                                </button>
+                                                                <h4 class="modal-title">Thông tin tài khoản đặt
+                                                                    phòng</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="row">
+                                                                    <div class="col-sm-3">
+                                                                        <img src="${booking.users.user_image}"
+                                                                             class="img-thumbnail"
+                                                                             width="300px" height="300px"
+                                                                        >
+                                                                    </div>
+                                                                    <div class="col-sm-9">
+                                                                        Họ tên: ${booking.users.user_fullname}<br>
+                                                                        Email: ${booking.users.user_email}<br>
+                                                                        Địa chỉ: ${booking.users.user_address}<br>
+                                                                        Ngày tạo: ${booking.users.user_created}<br>
+                                                                        Ngày
+                                                                        sinh: ${booking.users.user_date_of_birth}<br>
+                                                                        Số lần đặt phòng: ${count}
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default"
+                                                                            data-dismiss="modal">Close
+                                                                    </button>
+                                                                </div>
+                                                            </div>
 
-                                                        >
-                                                            <c:choose>
-                                                                <c:when test="${i == 1}">
-                                                                    Đã thanh toán
-                                                                </c:when>
-                                                                <c:when test="${i == 2}">
-                                                                    Đang chờ
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    Hủy
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                        </option>
-                                                    </c:forEach>
-                                                </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <hr>
-                                        <div class="row col-sm-offset-3">
-                                            <a href="${pageContext.servletContext.contextPath}/booking/ad"
-                                               class="btn btn-default">
-                                                <span class="glyphicon glyphicon-backward"></span>
-                                                Quay lại
-                                            </a>
-                                            <button type="submit" class="btn btn-default">
-                                                <span class="glyphicon glyphicon-check"></span>
-                                                Xác nhận
-                                            </button>
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-sm-3 control-label">Ngày đặt phòng</label>
+                                                <div class="col-sm-7">
+                                                    <input disabled class="form-control" value="${booking.created}"
+                                                           type="text" placeholder="Email address">
+                                                </div>
+                                            </div>
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-sm-3 control-label">Ngày nhận</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" value="${booking.check_in}"
+                                                           type="date" name="fdate" placeholder="Địa chỉ">
+                                                </div>
+                                            </div>
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-sm-3 control-label">Ngày trả</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" value="${booking.check_out}"
+                                                           type="date" name="sdate" placeholder="Địa chỉ">
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-sm-3 control-label">Tên khách hàng</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" value="${booking.customer_fullname}"
+                                                           type="text" name="fullname" placeholder="Địa chỉ">
+                                                </div>
+                                            </div>
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-sm-3 control-label">Số điện thoại</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" value="${booking.customer_phone}"
+                                                           type="text" name="phone" placeholder="Địa chỉ">
+                                                </div>
+                                            </div>
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-sm-3 control-label">Giá</label>
+                                                <div class="col-sm-7">
+                                                    <input class="form-control" value="${booking.booking_price}"
+                                                           type="number" name="price" placeholder="Địa chỉ">
+                                                </div>
+                                            </div>
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-sm-3 control-label">Trạng thái</label>
+                                                <div class="col-sm-7">
+                                                    <select class="form-control" name="status">
+                                                        <c:forEach var="i" begin="1" end="3">
+                                                            <option value="${i}"
+
+                                                                    <c:if test="${i == booking.booking_status}">
+                                                                        selected
+                                                                    </c:if>
+
+                                                            >
+                                                                <c:choose>
+                                                                    <c:when test="${i == 1}">
+                                                                            Đã thanh toán
+                                                                    </c:when>
+                                                                    <c:when test="${i == 2}">
+                                                                            Đang chờ
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                            Hủy
+                                                                    </c:otherwise>
+                                                                </c:choose>
+                                                            </option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row col-sm-offset-3">
+                                                <a href="${pageContext.servletContext.contextPath}/booking/ad"
+                                                   class="btn btn-default">
+                                                    <span class="glyphicon glyphicon-backward"></span>
+                                                    Quay lại
+                                                </a>
+                                                <button type="submit" class="btn btn-default">
+                                                    <span class="glyphicon glyphicon-check"></span>
+                                                    Xác nhận
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </form>

@@ -38,7 +38,7 @@
                             <div class="panel-heading">
                                 <h3 class="panel-title">LỊCH SỬ ĐẶT PHÒNG</h3>
                             </div>
-                            <span style="color: red">${message}</span>
+                            <h3 style="color: red; margin-left: 50px">${message}</h3>
                             <div class="panel-body">
                                 <table class="table table-hover">
                                     <thead>

@@ -117,6 +117,15 @@ public class BookingController {
     @GetMapping("booking/ad/edit/{id}")
     public String edit(@PathVariable int id, ModelMap mm) {
         mm.addAttribute("booking", bookingService.getBookById(id));
+        Booking b = bookingService.getBookById(id);
+        List<Booking> allBooking = bookingService.getAllBooking();
+        int i = 0;
+        for(Booking count : allBooking) {
+            if(count.getUsers().getUser_name().equals(b.getUsers().getUser_name())) {
+                i++;
+            }
+        }
+        mm.addAttribute("count", i);
         return "xac_nhan_dat_phong";
     }
 
