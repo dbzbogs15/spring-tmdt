@@ -11,8 +11,7 @@
                 <div class="col-xs-10 text-right menu-1">
                     <ul>
                         <li class="active"><a href="${pageContext.servletContext.contextPath}/">Home</a></li>
-                        <li><a href="hotels.html">Homestay</a></li>
-                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="/all_homestay">Homestay</a></li>
                         <li><a href="about.html">About</a></li>
                         <c:choose>
                             <c:when test="${sessionScope.user != null}">

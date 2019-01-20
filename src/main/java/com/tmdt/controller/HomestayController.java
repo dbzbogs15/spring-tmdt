@@ -4,6 +4,7 @@ import com.tmdt.model.Homestay;
 import com.tmdt.model.Users;
 import com.tmdt.service.HomestayService;
 import com.tmdt.service.LocationService;
+import com.tmdt.service.RegService;
 import com.tmdt.service.RoomService;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.transaction.Transactional;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -39,7 +40,7 @@ public class HomestayController {
 
     @RequestMapping("/homestay/my_homestay")
     public String homestay(ModelMap mm, HttpSession session) {
-        if(session.getAttribute("user") == null) {
+        if (session.getAttribute("user") == null) {
             return "redirect:/login";
         }
         Users u = (Users) session.getAttribute("user");
@@ -49,14 +50,14 @@ public class HomestayController {
 
     @GetMapping("/homestay/add_homestay")
     public String add_homestay(ModelMap mm) {
-        mm.addAttribute("location",locationService.findAll());
+        mm.addAttribute("location", locationService.findAll());
         return "add_homestay";
     }
 
     @GetMapping("homestay/edit_homestay/{id}")
     public String edit(ModelMap mm, @PathVariable int id) {
         mm.addAttribute("homestay", homestayService.getOne(id));
-        mm.addAttribute("location",locationService.findAll());
+        mm.addAttribute("location", locationService.findAll());
         return "edit_homestay";
     }
 
@@ -72,7 +73,7 @@ public class HomestayController {
         homestay.setHomestay_location(location);
 
         homestayService.update(homestay);
-        redirectAttributes.addFlashAttribute("message","Thay đổi thông tin homestay thành công!");
+        redirectAttributes.addFlashAttribute("message", "Thay đổi thông tin homestay thành công!");
         return "redirect:/homestay/my_homestay";
     }
 
@@ -81,8 +82,8 @@ public class HomestayController {
                                     @RequestParam(value = "data_image") MultipartFile commons,
                                     RedirectAttributes rd, HttpServletRequest request) {
         Users users = (Users) session.getAttribute("user");
-        if(commons.isEmpty()) {
-            rd.addFlashAttribute("message","Vui lòng thêm ảnh homestay !");
+        if (commons.isEmpty()) {
+            rd.addFlashAttribute("message", "Vui lòng thêm ảnh homestay !");
             return "redirect:/homestay/add_homestay";
         }
         String homestay_name = request.getParameter("homestay_name");
@@ -111,7 +112,7 @@ public class HomestayController {
             homestayService.update(homestay1);
         } catch (Exception r) {
             r.getStackTrace();
-            rd.addFlashAttribute("message","Vui fail ảnh !");
+            rd.addFlashAttribute("message", "Vui fail ảnh !");
             return "redirect:/homestay/add_homestay";
         }
         System.out.println(request.getServletContext().getRealPath(root));
@@ -121,5 +122,31 @@ public class HomestayController {
 //        String homestay_location = wr.getParameter("homestay_location");
 //        System.out.println(homestay_description + "/" + homestay_location + "/" + homestay_name);
         return "redirect:/homestay/my_homestay";
+    }
+
+
+    @Autowired
+    RegService regService;
+
+    @GetMapping("/all_homestay")
+    public String allHomestay(ModelMap mm) {
+        List<Integer> listID = new ArrayList<>();
+        regService.findDate().forEach((i) ->
+                listID.add(i.getHomestay_id())
+        );
+        List<Homestay> h = homestayService.findAll();
+        List<Homestay> arr = new ArrayList<>();
+        for (Homestay homestay : h) {
+            if (listID.contains(homestay.getHomestay_id())) {
+                arr.add(homestay);
+            }
+        }
+        for (Homestay homestay : h) {
+            if (!listID.contains(homestay.getHomestay_id())) {
+                arr.add(homestay);
+            }
+        }
+        mm.addAttribute("homestay", arr);
+        return "allHomestay";
     }
 }
