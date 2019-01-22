@@ -13,7 +13,7 @@ public class RoomService {
     RoomDAO roomDAO;
 
     public List<Room> findAll() {
-        return roomDAO.findAll();
+        return roomDAO.getAll();
     }
     public Room getOne(int id) { return roomDAO.getOne(id); }
     public List<Room> getRoomByHomestay(int id) {

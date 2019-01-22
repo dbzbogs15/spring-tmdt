@@ -59,7 +59,7 @@
                                 </h3>
                             </div>
                             <div class="panel-body">
-                                <a href="${pageContext.servletContext.contextPath}/homestay/add_homestay"
+                                <a href="${pageContext.servletContext.contextPath}/room/add_room?homestay=${id_homestay}"
                                    class="btn btn-default">
                                     <span class="glyphicon glyphicon-plus"></span>
                                 </a>
@@ -104,7 +104,8 @@
                                                 >
                                                     <span class="glyphicon glyphicon-edit"></span>
                                                 </a>
-                                                <a class="btn btn-default">
+                                                <a class="btn btn-default"
+                                                   href="/room/del_room?id_room=${room.room_id}&id_homestay=${room.homestay_id}">
                                                     <span class="glyphicon glyphicon-trash"></span>
                                                 </a>
                                             </td>

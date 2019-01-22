@@ -42,15 +42,15 @@
                                 <a href="${pageContext.servletContext.contextPath}/homestay/add_homestay" class="btn btn-default">
                                     <span class="glyphicon glyphicon-plus"></span>
                                 </a>
-                                <div style="color: red">${message}</div>
+                                <h3 style="color: red">${message}</h3>
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>Tên phòng</th>
                                         <%--<th>Giới thiệu</th>--%>
-                                        <th>Đánh giá</th>
-                                        <th>Số lượt đánh giá</th>
+                                        <%--<th>Đánh giá</th>--%>
+                                        <%--<th>Số lượt đánh giá</th>--%>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -58,12 +58,12 @@
                                     <c:forEach var="homestay" varStatus="loop" items="${homestay}">
                                         <tr>
                                             <td>${loop.index}</td>
-                                            <td width="30%">${homestay.homestay_name}</td>
+                                            <td width="50%">${homestay.homestay_name}</td>
                                                 <%--<td width="30%">--%>
                                                 <%--${homestay.homestay_description}--%>
                                                 <%--</td>--%>
-                                            <td>${homestay.homestay_reviews}</td>
-                                            <td>${homestay.homestay_number_reviews}</td>
+                                            <%--<td>${homestay.homestay_reviews}</td>--%>
+                                            <%--<td>${homestay.homestay_number_reviews}</td>--%>
                                             <td>
                                                 <a class="btn btn-default"
                                                     href="/homestay/edit_homestay/${homestay.homestay_id}">

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.mail.internet.InternetAddress;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
 import java.util.UUID;

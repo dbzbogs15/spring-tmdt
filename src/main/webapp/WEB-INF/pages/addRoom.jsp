@@ -15,6 +15,7 @@
     <%--
 </c:if>
 --%>
+    <script type="text/javascript" src="/resources/ckeditor/ckeditor.js"></script>
 </head>
 <body>
 <%@include file="components/navbar.jsp" %>
@@ -38,34 +39,39 @@
                             <div class="panel-heading">
                                 <div class="panel-title">
                                     <a href="/homestay/my_homestay">QUẢN LÝ HOMESTAY</a>
-                                    > SỬA THÔNG TIN HOMESTAY
+                                    > THÊM PHÒNG
                                 </div>
                             </div>
+                            <h3 style="color: red">${message}</h3>
                             <div class="panel-body">
                                 <form method="post"
-                                      action="${pageContext.servletContext.contextPath}/homestay/edit_homestay/${homestay.homestay_id}">
+                                      enctype="multipart/form-data"
+                                      action="${pageContext.servletContext.contextPath}/room/add_room">
                                     <div class="form-horizontal">
                                         <div class="form-group form-group-sm">
                                             <div class="col-sm-offset-3">
-                                                <img src="/resources/${homestay.homestay_image}"
+                                                <img src="/resources/"
                                                      id="imgshow"
                                                      class="thumbnail" width="75%">
                                             </div>
                                         </div>
+                                        <input type="hidden" value="${id_homestay}" name="id_homestay">
                                         <div class="form-group form-group-sm">
                                             <label class="col-sm-3 control-label">Images</label>
                                             <div class="col-sm-7">
                                                 <input class="form-control"
-                                                       name="homestay_image"
+                                                       name="room_image"
                                                        id="imgload"
+                                                       required
                                                        type="file">
                                             </div>
                                         </div>
                                         <div class="form-group form-group-sm">
-                                            <label class="col-sm-3 control-label">Tên homestay</label>
+                                            <label class="col-sm-3 control-label">Tên phòng</label>
                                             <div class="col-sm-7">
-                                                <input class="form-control" value="${homestay.homestay_name}"
-                                                       name="homestay_name"
+                                                <input class="form-control"
+                                                       required
+                                                       name="room_name"
                                                        type="text" placeholder="Tên">
                                             </div>
                                         </div>
@@ -74,48 +80,73 @@
                                             <div class="col-sm-7">
                                                 <textarea class="form-control"
                                                           name="description"
-                                                          rows="5">${homestay.homestay_description}</textarea>
+                                                          required
+                                                          rows="5"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-group-sm">
+                                            <label class="col-sm-3 control-label">Giá phòng VNĐ</label>
+                                            <div class="col-sm-7">
+                                                <input class="form-control"
+                                                       name="price"
+                                                       required
+                                                       type="number" placeholder="Giá phòng">
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-group-sm">
+                                            <label class="col-sm-3 control-label">Trạng thái</label>
+                                            <div class="col-sm-7">
+                                                <select name="status" class="form-control">
+                                                    <option value="1">
+                                                        Hoạt động
+                                                    </option>
+                                                    <option value="">
+                                                        Đóng
+                                                    </option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group form-group-sm">
                                             <label class="col-sm-3 control-label">Địa chỉ</label>
                                             <div class="col-sm-7">
-                                                <select class="form-control" name="location">
-                                                    <c:forEach var="location" items="${location}">
-                                                        <option value="${location.location_id}"
-
-                                                                <c:if test="${location.location_id == homestay.location.location_id}">
-                                                                    selected
-                                                                </c:if>
-                                                        >
-                                                                ${location.location_name}
-                                                        </option>
-                                                    </c:forEach>
-                                                </select>
+                                                <input class="form-control"
+                                                       name="addresss"
+                                                       required
+                                                       type="text" placeholder="Giá phòng">
                                             </div>
                                         </div>
-                                        <%--<hr>--%>
+                                        <div class="form-group form-group-sm">
+                                            <label class="col-sm-3 control-label">Thông tin phòng</label>
+                                            <div class="col-sm-7">
+                                                <textarea class="form-control"
+                                                          id="noidung"
+                                                          required
+                                                          name="info"
+                                                          rows="5"></textarea>
+                                            </div>
+                                        </div>
+                                        <hr>
                                         <%--<div class="form-group form-group-sm">--%>
-                                            <%--<label class="col-sm-3 control-label">Điểm đánh giá</label>--%>
-                                            <%--<div class="col-sm-7">--%>
-                                                <%--<input class="form-control" value="${homestay.homestay_reviews}"--%>
-                                                       <%--type="text"--%>
-                                                       <%--disabled--%>
-                                                       <%--name="fullname" placeholder="Địa chỉ">--%>
-                                            <%--</div>--%>
+                                        <%--<label class="col-sm-3 control-label">Điểm đánh giá</label>--%>
+                                        <%--<div class="col-sm-7">--%>
+                                        <%--<input class="form-control" value="${room.room_reviews}"--%>
+                                        <%--type="text"--%>
+                                        <%--disabled--%>
+                                        <%--name="fullname" placeholder="Địa chỉ">--%>
+                                        <%--</div>--%>
                                         <%--</div>--%>
                                         <%--<div class="form-group form-group-sm">--%>
-                                            <%--<label class="col-sm-3 control-label">Lượt đánh giá</label>--%>
-                                            <%--<div class="col-sm-7">--%>
-                                                <%--<input class="form-control" value="${homestay.homestay_number_reviews}"--%>
-                                                       <%--type="text"--%>
-                                                       <%--disabled--%>
-                                                       <%--name="phone" placeholder="Địa chỉ">--%>
-                                            <%--</div>--%>
+                                        <%--<label class="col-sm-3 control-label">Lượt đánh giá</label>--%>
+                                        <%--<div class="col-sm-7">--%>
+                                        <%--<input class="form-control" value="${room.room_number_reviews}"--%>
+                                        <%--type="text"--%>
+                                        <%--disabled--%>
+                                        <%--name="phone" placeholder="Địa chỉ">--%>
+                                        <%--</div>--%>
                                         <%--</div>--%>
                                         <hr>
                                         <div class="row col-sm-offset-3">
-                                            <a href="${pageContext.servletContext.contextPath}/homestay/my_homestay"
+                                            <a href="${pageContext.servletContext.contextPath}/room/ad_room/${id_homestay}"
                                                class="btn btn-default">
                                                 <span class="glyphicon glyphicon-backward"></span>
                                                 Quay lại
@@ -148,6 +179,9 @@
             }
         });
     });
+</script>
+<script>
+    CKEDITOR.replace('noidung');
 </script>
 </body>
 </html>

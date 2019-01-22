@@ -12,7 +12,7 @@
                     <ul>
                         <li class="active"><a href="${pageContext.servletContext.contextPath}/">Home</a></li>
                         <li><a href="/all_homestay">Homestay</a></li>
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="/abount">About</a></li>
                         <c:choose>
                             <c:when test="${sessionScope.user != null}">
                                 <li><a href="${pageContext.servletContext.contextPath}/booking/history">Chào ${sessionScope.user.user_fullname}</a> </li>

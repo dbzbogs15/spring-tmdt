@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Setter
 public class Room {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int room_id;
     private String room_name;
     private int room_status;
@@ -27,6 +27,8 @@ public class Room {
     private int room_type;
     private int homestay_id;
     private String room_image;
+//    @Column(name="isDeleted")
+    private int room_del;
 
     @OneToOne
     @JoinColumn(name = "homestay_id", insertable = false, updatable = false)

@@ -12,8 +12,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1 animate-box">
-                <h3>Thanh toán của bạn không hoàn tất</h3>
-                <a class="btn btn-default" href="${pageContext.servletContext.contextPath}/service">Quay lại</a>
+                <h3>Hãy liên hệ với chúng tôi để được tư vấn miễn phí. Dự án đang trong quá trình hoàn thiện và cập nhật, mọi ý kiến góp ý xin vui lòng gửi về email: thai@gmail.com or 0339843913</h3>
             </div>
         </div>
     </div>

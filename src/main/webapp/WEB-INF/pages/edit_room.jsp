@@ -39,7 +39,7 @@
                             <div class="panel-heading">
                                 <div class="panel-title">
                                     <a href="/homestay/my_homestay">QUẢN LÝ HOMESTAY</a>
-                                    > SỬA THÔNG TIN HOMESTAY
+                                    > SỬA THÔNG TIN PHÒNG
                                 </div>
                             </div>
                             <div class="panel-body">
@@ -128,24 +128,24 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group form-group-sm">
-                                            <label class="col-sm-3 control-label">Điểm đánh giá</label>
-                                            <div class="col-sm-7">
-                                                <input class="form-control" value="${room.room_reviews}"
-                                                       type="text"
-                                                       disabled
-                                                       name="fullname" placeholder="Địa chỉ">
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-group-sm">
-                                            <label class="col-sm-3 control-label">Lượt đánh giá</label>
-                                            <div class="col-sm-7">
-                                                <input class="form-control" value="${room.room_number_reviews}"
-                                                       type="text"
-                                                       disabled
-                                                       name="phone" placeholder="Địa chỉ">
-                                            </div>
-                                        </div>
+                                        <%--<div class="form-group form-group-sm">--%>
+                                            <%--<label class="col-sm-3 control-label">Điểm đánh giá</label>--%>
+                                            <%--<div class="col-sm-7">--%>
+                                                <%--<input class="form-control" value="${room.room_reviews}"--%>
+                                                       <%--type="text"--%>
+                                                       <%--disabled--%>
+                                                       <%--name="fullname" placeholder="Địa chỉ">--%>
+                                            <%--</div>--%>
+                                        <%--</div>--%>
+                                        <%--<div class="form-group form-group-sm">--%>
+                                            <%--<label class="col-sm-3 control-label">Lượt đánh giá</label>--%>
+                                            <%--<div class="col-sm-7">--%>
+                                                <%--<input class="form-control" value="${room.room_number_reviews}"--%>
+                                                       <%--type="text"--%>
+                                                       <%--disabled--%>
+                                                       <%--name="phone" placeholder="Địa chỉ">--%>
+                                            <%--</div>--%>
+                                        <%--</div>--%>
                                         <hr>
                                         <div class="row col-sm-offset-3">
                                             <a href="${pageContext.servletContext.contextPath}/room/ad_room/${room.homestay_id}"

@@ -8,6 +8,7 @@ import com.tmdt.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.*;
@@ -75,6 +76,10 @@ public class MainController {
         System.out.println(Calendar.getInstance().getTime());
         mm.addAttribute("room",listBestRoom);
         return "index";
+    }
+    @GetMapping("/abount")
+    public String abount() {
+        return "abount";
     }
 
 }

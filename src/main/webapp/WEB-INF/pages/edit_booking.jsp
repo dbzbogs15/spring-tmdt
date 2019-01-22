@@ -99,6 +99,7 @@
                                             <div class="col-sm-7">
                                                 <input class="form-control"
                                                        id="price"
+                                                       readonly
                                                        value="${booking.booking_price}"
                                                        name="price"
                                                        type="text" placeholder="Ngày trả">
